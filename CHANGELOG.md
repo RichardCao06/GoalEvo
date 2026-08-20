@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 — Protocol v0.1 candidate · 2026-08-20
+## 0.1.0 — Protocol v0.1 Pilot-Locked · 2026-08-20
 
 ### Human decisions applied
 
@@ -15,6 +15,7 @@
 
 - consolidated `docs/protocol/PROTOCOL_V0.1.md`;
 - human Decision Record and Pilot Lock Manifest;
+- semantic baseline attestation for commit `5694556bda79ea14c9d3380969f688c8af7304cd`;
 - seven-class change taxonomy and atomic Patch policy;
 - Track A-H1, H2, H3 pilot estimands and hierarchical conclusion rule;
 - coverage, abstention precision, erroneous abstention rate, and selective risk;
@@ -25,4 +26,4 @@
 
 ### Status
 
-No confirmatory experiment has been authorized, no Sealed Test exists, no Gold labels have been created, and no hypothesis result is claimed.
+Protocol v0.1 is authorized for engineering-pilot work. No confirmatory experiment has been authorized, no Sealed Test exists, no Gold labels have been created, and no hypothesis result is claimed.

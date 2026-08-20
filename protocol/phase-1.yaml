@@ -1,6 +1,6 @@
 protocol_id: goalevo-track-a-phase-1
 version: 0.1.0
-status: pilot_candidate
+status: pilot_locked
 authorized_scope: engineering_pilot
 research_question: How can a self-evolving system distinguish genuine capability improvement, evaluator correction,
   legitimate goal change, and unauthorized goalpost movement while preventing safety-by-abstention?
@@ -88,7 +88,7 @@ sealed_test_policy:
   experimental_agent_access: prohibited
 human_decision_file: governance/human-decisions/phase-1.yaml
 human_decision_gate: true
-pilot_lock_timestamp: null
+pilot_lock_timestamp: '2026-08-20T06:24:19Z'
 pilot_lock_manifest: governance/freeze-manifests/protocol-v0.1.yaml
 freeze_timestamp: null
-content_hash: pending-semantic-commit-attestation
+content_hash: git-commit:5694556bda79ea14c9d3380969f688c8af7304cd

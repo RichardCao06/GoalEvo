@@ -1,11 +1,11 @@
 manifest_id: goalevo-protocol-v0.1-pilot-lock
 protocol_id: goalevo-track-a-phase-1
 protocol_version: 0.1.0
-status: candidate
+status: pilot_locked
 authorized_scope: engineering_pilot
 human_decision_source: governance/decision-records/phase-1-v0.1.yaml
-semantic_baseline_commit: pending
-attestation_method: The next commit will attest the immediately preceding semantic baseline commit; no self-referential commit hash is claimed.
+semantic_baseline_commit: 5694556bda79ea14c9d3380969f688c8af7304cd
+attestation_method: This commit attests the immediately preceding semantic baseline commit; no self-referential commit hash is claimed.
 artifact_groups:
 - protocol-and-human-decisions
 - seven-class-taxonomy
@@ -26,4 +26,4 @@ confirmatory_blockers:
 - Methods / Statistics Lead is vacant
 - Independent Custodian is vacant
 - Sealed Test has not been created
-created_at: '2026-08-20T05:43:00Z'
+created_at: '2026-08-20T06:24:19Z'

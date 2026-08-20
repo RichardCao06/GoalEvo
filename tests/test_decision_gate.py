@@ -5,6 +5,7 @@ from goalevo_protocol.decision_gate import (
     confirmatory_decision_problems,
     decision_problems,
     freeze_problems,
+    pilot_lock_problems,
 )
 from goalevo_protocol.io import load_data
 
@@ -15,6 +16,10 @@ ROOT = Path(__file__).resolve().parents[1]
 def test_recorded_human_decisions_clear_engineering_pilot_gate() -> None:
     document = load_data(ROOT / "governance/human-decisions/phase-1.yaml")
     assert decision_problems(document) == []
+
+
+def test_protocol_v0_1_is_pilot_locked() -> None:
+    assert pilot_lock_problems(ROOT) == []
 
 
 def test_confirmatory_gate_remains_closed_until_independent_roles_are_filled() -> None:

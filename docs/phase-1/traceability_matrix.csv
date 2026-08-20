@@ -13,4 +13,4 @@ P1-JOINT,D011,docs/protocol/hypotheses_h1_h3.md,protocol/phase-1.yaml,tests/test
 P1-ROLES,D012,docs/phase-1/HUMAN_DECISION_PACKET.md,governance/human-decisions/phase-1.yaml,src/goalevo_protocol/decision_gate.py,pilot_applied_confirmatory_blocked
 P1-WORLDS,D013,docs/protocol/PROTOCOL_V0.1.md,protocol/phase-1.yaml,fixtures/reimbursement-v0/world.yaml,applied
 P1-OPENNESS,D014,README.md,governance/human-decisions/phase-1.yaml,SECURITY.md,deferred_with_interim_controls
-P1-PILOT-LOCK,D001-D013,docs/phase-1/PROTOCOL_V0.1_DELIVERY.md,governance/freeze-manifests/protocol-v0.1.yaml,.github/workflows/validate.yml,candidate
+P1-PILOT-LOCK,D001-D013,docs/phase-1/PROTOCOL_V0.1_DELIVERY.md,governance/freeze-manifests/protocol-v0.1.yaml,.github/workflows/validate.yml,pilot_locked

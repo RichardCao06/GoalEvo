@@ -6,12 +6,13 @@ GoalEvo 研究如何判断一个能够修改自身 Harness、评价器、目标�
 
 ## 当前状态
 
-本分支正在交付 **Protocol v0.1（Pilot-Locked Engineering Baseline）**。人类 D001–D013 决定已经记录并实施，D014 许可证决定暂缓；语义内容已形成，等待最终 Git 提交证明完成 Pilot Lock。
+第一阶段已交付 **Protocol v0.1（Pilot-Locked Engineering Baseline）**。人类 D001–D013 决定已经记录并实施，D014 许可证决定暂缓；工程试点基线由独立 Git 提交证明锁定。
 
 - `protocol_version`: **0.1.0**
-- `protocol_status`: **pilot_candidate**
+- `protocol_status`: **pilot_locked**
 - `authorized_scope`: **engineering_pilot**
 - `human_decision_gate`: **satisfied for pilot**
+- `semantic_baseline_commit`: **5694556bda79ea14c9d3380969f688c8af7304cd**
 - `confirmatory_experiment`: **not authorized**
 - `sealed_test`: **not created**
 
@@ -84,6 +85,7 @@ python -m goalevo_protocol.cli freeze-check
 - [`docs/protocol/PROTOCOL_V0.1.md`](docs/protocol/PROTOCOL_V0.1.md)
 - [`docs/phase-1/PROTOCOL_V0.1_DELIVERY.md`](docs/phase-1/PROTOCOL_V0.1_DELIVERY.md)
 - [`governance/decision-records/phase-1-v0.1.yaml`](governance/decision-records/phase-1-v0.1.yaml)
+- [`governance/freeze-manifests/protocol-v0.1.yaml`](governance/freeze-manifests/protocol-v0.1.yaml)
 - [`docs/HUMAN_AGENT_COLLABORATION_CHARTER.md`](docs/HUMAN_AGENT_COLLABORATION_CHARTER.md)
 
 ## License
