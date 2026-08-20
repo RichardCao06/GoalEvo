@@ -1,4 +1,4 @@
-.PHONY: install validate decisions freeze-check test all
+.PHONY: install validate decisions pilot-check freeze-check test all
 
 install:
 	python -m pip install -e '.[dev]'
@@ -9,10 +9,13 @@ validate:
 decisions:
 	python -m goalevo_protocol.cli decisions
 
+pilot-check:
+	python -m goalevo_protocol.cli pilot-check
+
 freeze-check:
 	python -m goalevo_protocol.cli freeze-check
 
 test:
 	pytest -q
 
-all: validate test decisions
+all: validate decisions pilot-check test

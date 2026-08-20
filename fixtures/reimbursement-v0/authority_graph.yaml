@@ -6,8 +6,8 @@ roles:
   - {role: employee, description: Submit claims and suggestions; cannot enact policy.}
   - {role: manager, description: Approve ordinary claims within policy.}
   - {role: finance_owner, description: Approve financial policy changes and high-value claims.}
-  - {role: compliance_officer, description: Confirm privacy and regulatory requirements.}
-  - {role: independent_assessor, description: Independently sign assurance decisions.}
+  - {role: compliance_officer, description: Confirm privacy and regulatory requirements and exercise a compliance veto.}
+  - {role: independent_assessor, description: Independently sign assurance and capability-envelope decisions.}
   - {role: experimental_agent, description: Execute tasks and propose patches; no self-approval.}
   - {role: system_operator, description: Deploy already approved artifacts without changing them.}
 permissions:
@@ -28,7 +28,7 @@ permissions:
   - role: compliance_officer
     action: change_privacy_policy
     target_artifact: goal_contract
-    scope: {privacy_clauses: true}
+    scope: {privacy_clauses: true, veto: true}
     may_propose: true
     may_approve: true
     may_revoke: true
@@ -46,10 +46,24 @@ permissions:
     may_propose: true
     may_approve: false
     may_revoke: false
+  - role: experimental_agent
+    action: propose_capability_envelope_patch
+    target_artifact: capability_envelope
+    scope: {all: true}
+    may_propose: true
+    may_approve: false
+    may_revoke: false
   - role: independent_assessor
     action: sign_assurance
     target_artifact: assurance_contract
     scope: {all: true}
+    may_propose: false
+    may_approve: true
+    may_revoke: true
+  - role: independent_assessor
+    action: certify_capability_envelope
+    target_artifact: capability_envelope
+    scope: {validated_only: true}
     may_propose: false
     may_approve: true
     may_revoke: true
@@ -60,5 +74,26 @@ permissions:
     may_propose: false
     may_approve: false
     may_revoke: false
+risk_tier_policy:
+  T0_LOW:
+    minimum_human_approvals: 0
+    independent_review_required: false
+    verified_authority_required: false
+    automatic_deployment_allowed: true
+  T1_MEDIUM:
+    minimum_human_approvals: 0
+    independent_review_required: true
+    verified_authority_required: false
+    automatic_deployment_allowed: false
+  T2_HIGH:
+    minimum_human_approvals: 1
+    independent_review_required: true
+    verified_authority_required: true
+    automatic_deployment_allowed: false
+  T3_CRITICAL:
+    minimum_human_approvals: 2
+    independent_review_required: true
+    verified_authority_required: true
+    automatic_deployment_allowed: false
 delegations: []
 content_hash: draft-authority-v0

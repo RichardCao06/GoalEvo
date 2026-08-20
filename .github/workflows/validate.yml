@@ -23,7 +23,17 @@ jobs:
         run: python -m pip install -e '.[dev]'
       - name: Validate schemas and invariants
         run: python -m goalevo_protocol.cli validate
-      - name: Report human decision gate
+      - name: Report human decision gates
         run: python -m goalevo_protocol.cli decisions
+      - name: Require Protocol v0.1 engineering-pilot lock
+        run: python -m goalevo_protocol.cli pilot-check
       - name: Test
         run: pytest -q
+      - name: Confirm confirmatory freeze remains closed
+        shell: bash
+        run: |
+          if python -m goalevo_protocol.cli freeze-check; then
+            echo "Protocol v0.1 must not pass the confirmatory freeze gate."
+            exit 1
+          fi
+          echo "Confirmatory freeze correctly remains closed."

@@ -9,23 +9,28 @@
 - [ ] Goal Discovery
 - [ ] Goal Normative Change
 - [ ] Autonomy
-- [ ] Assurance / Capability Envelope
+- [ ] Assurance
+- [ ] Capability Envelope
 - [ ] Research protocol or data semantics
+
+**Governance tier:** `T0_LOW | T1_MEDIUM | T2_HIGH | T3_CRITICAL`
 
 ## Governance
 
 - [ ] The change has one primary change class, or a bundle of atomic patches.
-- [ ] Any Goal, Autonomy, Assurance, hypothesis, metric, Gold-label, or sealed-test change has explicit human approval.
+- [ ] Any Goal, Autonomy, Assurance, Capability Envelope, hypothesis, metric, Gold-label, or Sealed-Test change has explicit human approval.
 - [ ] Proposer, implementer, evaluator, and approver roles are separated where required.
 - [ ] Unfavorable results and failed runs are retained.
+- [ ] Coverage and abstention behavior are reported when the change can alter deferral behavior.
 
 ## Validation
 
 - [ ] `python -m goalevo_protocol.cli validate`
+- [ ] `python -m goalevo_protocol.cli decisions`
+- [ ] `python -m goalevo_protocol.cli pilot-check`
 - [ ] `pytest -q`
-- [ ] Human Decision Gate reviewed
-- [ ] Freeze eligibility is not claimed unless `freeze-check` passes
+- [ ] Confirmatory freeze is not claimed unless `freeze-check` passes
 
 ## Evidence and traceability
 
-<!-- Link decisions, work orders, fixtures, tests, and protocol sections. -->
+<!-- Link human decisions, work orders, fixtures, tests, and protocol sections. -->

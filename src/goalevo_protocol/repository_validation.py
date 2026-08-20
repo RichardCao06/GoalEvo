@@ -7,12 +7,14 @@ from typing import Any
 
 from .invariants import validate_fixture
 from .io import load_data
-from .schema_validation import ValidationIssue, validate_file
+from .schema_validation import validate_file
 
 
 _SINGLE_FILES = {
     "protocol/phase-1.yaml": "study_protocol.schema.json",
     "governance/human-decisions/phase-1.yaml": "human_decisions.schema.json",
+    "governance/decision-records/phase-1-v0.1.yaml": "decision_record.schema.json",
+    "governance/freeze-manifests/protocol-v0.1.yaml": "pilot_lock_manifest.schema.json",
 }
 
 _FIXTURE_SINGLE = {
@@ -58,8 +60,12 @@ def validate_repository(root: Path) -> list[str]:
 
         bundle: dict[str, Any] = {}
         mapping = {
-            "tasks": "tasks.yaml", "patches": "patch_proposals.yaml", "reviews": "review_decisions.yaml",
-            "snapshots": "snapshots.yaml", "executions": "executions.yaml", "outcomes": "outcomes.yaml",
+            "tasks": "tasks.yaml",
+            "patches": "patch_proposals.yaml",
+            "reviews": "review_decisions.yaml",
+            "snapshots": "snapshots.yaml",
+            "executions": "executions.yaml",
+            "outcomes": "outcomes.yaml",
         }
         for key, filename in mapping.items():
             path = fixture_dir / filename

@@ -2,96 +2,90 @@
 
 **Goal-Governed Self-Evolution / 目标治理的自进化**
 
-GoalEvo 研究如何判断一个能够修改自身 Harness、评价器、目标建议、自治权限和证明规则的智能系统，究竟是获得了真实能力提升，还是通过改变“什么算成功”制造了表面进步。
+GoalEvo 研究如何判断一个能够修改自身 Harness、评价器、目标建议、自治权限、证明规则和能力边界的智能系统，究竟是获得了真实能力提升，还是通过改变“什么算成功”制造了表面进步。
 
-本仓库当前处于 **Phase 1：研究协议与数据语义冻结前的 Draft 阶段**。本阶段不运行确认性主实验，也不声称任何研究假设已得到支持。
+## 当前状态
 
-## 当前阶段目标
+本分支正在交付 **Protocol v0.1（Pilot-Locked Engineering Baseline）**。人类 D001–D013 决定已经记录并实施，D014 许可证决定暂缓；语义内容已形成，等待最终 Git 提交证明完成 Pilot Lock。
 
-Phase 1 建立后续 Track A 受控 Benchmark 的共同测量基础：
+- `protocol_version`: **0.1.0**
+- `protocol_status`: **pilot_candidate**
+- `authorized_scope`: **engineering_pilot**
+- `human_decision_gate`: **satisfied for pilot**
+- `confirmatory_experiment`: **not authorized**
+- `sealed_test`: **not created**
 
-1. 形式化系统状态、真实目标、可见目标、评价器和能力变化；
-2. 冻结六类变更分类与原子 Patch 规则；
-3. 将 Track A-H1、H2、H3 写成可证伪的 estimand；
-4. 建立版本化、可审计、可重放的数据 Schema；
-5. 建立人类—Agent 决策权、审批、审计与 Protocol Freeze 机制。
+## Protocol v0.1 的含义
 
-## 重要状态
+v0.1 允许开发受控微型世界、Schema、Oracle、Harness 和运行器，也允许开展明确标记为非确认性的工程试点。
 
-- `protocol_status`: **draft**
-- `human_decision_gate`: **open**
-- `sealed_test`: **not_created**
-- `confirmatory_experiment`: **not_authorized**
+v0.1 **不是**正式主实验的最终预注册。以下事项仍会阻止 confirmatory freeze：
 
-只有当 `governance/human-decisions/phase-1.yaml` 中所有阻塞性决定得到有权人类批准，并通过独立审查后，协议才可以从 `draft` 晋级为 `frozen`。
+- H2 数值化非劣界限；
+- 样本规模和功效方案；
+- 正式统计公式、排除和重跑规则；
+- 独立 Methods / Statistics Lead；
+- Independent Custodian；
+- Sealed Test。
+
+## 已锁定的研究基础
+
+1. 系统状态 `Σ_t=(H_t,E_t,G_t,A_t,R_t,C_t)` 与外部 World State、Authority Graph、`G_t^*` 分离；
+2. 七类原子 Patch，包括独立的 `CAPABILITY_ENVELOPE_CHANGE`；
+3. T0–T3 风险分级授权；
+4. 不可补偿 Severe False Pass 与证据/授权/审计篡改红线；
+5. H1 安全、H2 效用非劣、H3 合法适应的工程试点 estimand；
+6. 反“通过无限弃权获得安全”的 Coverage、Abstention Precision、Erroneous Abstention Rate 和 Selective Risk；
+7. 版本化、可审计、可重放的数据 Schema；
+8. 人类—Agent 的决策权、审批和审计边界。
 
 ## 仓库结构
 
 ```text
 docs/
   HUMAN_AGENT_COLLABORATION_CHARTER.md
-  protocol/                 # 形式化、分类、假设、指标与冻结策略
-  phase-1/                  # 人类决策包、Agent 工作报告与追溯矩阵
+  protocol/                    # 统一协议、形式化、分类、假设、指标与冻结策略
+  phase-1/                     # 人类决定状态、交付说明、工作报告与追溯矩阵
 governance/
-  human-decisions/          # 规范性决定及签署状态
-  templates/                # Work Order、Decision Record、Amendment 模板
-schemas/                    # JSON Schema Draft 2020-12
-fixtures/reimbursement-v0/  # 员工报销微型世界的最小完整 Fixture
-taxonomy_cases/             # 变更分类候选案例与人工编码批次
-src/goalevo_protocol/       # 校验、决策 Gate、派生指标与 CLI
-tests/                      # 单元与跨对象不变量测试
+  human-decisions/             # 机器可读人类决定 Gate
+  decision-records/            # 人类决定来源与实施记录
+  freeze-manifests/            # Pilot Lock / Confirmatory Freeze 证明
+  templates/                   # Work Order、Decision Record、Amendment 模板
+protocol/                      # 机器可读 StudyProtocol
+schemas/                       # JSON Schema Draft 2020-12
+fixtures/reimbursement-v0/     # 员工报销微型世界完整 Fixture
+taxonomy_cases/                # 84 个非 Gold 候选案例与 28 个盲化人工编码案例
+src/goalevo_protocol/          # 校验、Gate、派生指标与 CLI
+tests/                         # 单元与跨对象不变量测试
 ```
 
-## 你现在需要完成的工作
-
-请先阅读：
-
-- [`docs/phase-1/HUMAN_DECISION_PACKET.md`](docs/phase-1/HUMAN_DECISION_PACKET.md)
-- [`governance/human-decisions/phase-1.yaml`](governance/human-decisions/phase-1.yaml)
-
-对每个决定填写：
-
-```yaml
-decision: approve | modify | reject | defer
-human_rationale: "你的理由"
-approved_by: "姓名或 GitHub 账号"
-approved_at: "ISO-8601 时间"
-```
-
-`defer` 不等于批准；阻塞性决定仍为 `defer` 时，协议不得冻结。
-
-## 本地验证
+## 验收命令
 
 需要 Python 3.11+。
 
 ```bash
 python -m pip install -e '.[dev]'
-goalevo decisions
-goalevo validate
-pytest
-```
-
-标准命令：
-
-```bash
-python -m goalevo_protocol.cli decisions
 python -m goalevo_protocol.cli validate
+python -m goalevo_protocol.cli decisions
+python -m goalevo_protocol.cli pilot-check
 pytest -q
 ```
 
-当前 Draft 的预期行为是：Schema、Fixture 和测试通过，但 `decisions` 会报告尚未完成的人类决定，`freeze-check` 会失败。
+正式确认性条件使用：
 
-## 科学与治理原则
+```bash
+python -m goalevo_protocol.cli freeze-check
+```
 
-- 目标、自治权限、证明标准和能力边界分开治理；
-- 提出、执行、评价、批准不得由同一主体独占；
-- 可由程序判断的事项优先使用固定程序；
-- 失败运行、不利证据和被拒绝 Patch 必须保留；
-- Experimental Agent 不得访问隐藏真实目标、Gold 标签或密封测试；
-- 任何正式结论必须与预注册范围和证据覆盖相匹配。
+在 v0.1 中，`freeze-check` 应继续失败；它用于证明项目没有把工程试点误写成正式确认性实验。
 
-详见 [`docs/HUMAN_AGENT_COLLABORATION_CHARTER.md`](docs/HUMAN_AGENT_COLLABORATION_CHARTER.md)。
+## 关键文档
+
+- [`docs/protocol/PROTOCOL_V0.1.md`](docs/protocol/PROTOCOL_V0.1.md)
+- [`docs/phase-1/PROTOCOL_V0.1_DELIVERY.md`](docs/phase-1/PROTOCOL_V0.1_DELIVERY.md)
+- [`governance/decision-records/phase-1-v0.1.yaml`](governance/decision-records/phase-1-v0.1.yaml)
+- [`docs/HUMAN_AGENT_COLLABORATION_CHARTER.md`](docs/HUMAN_AGENT_COLLABORATION_CHARTER.md)
 
 ## License
 
-尚未由人类项目负责人决定。本仓库在许可证明确前不授予额外许可。
+D014 已暂缓。在人类正式决定前，本仓库不新增许可证，也不授予超出适用法律默认范围的额外许可。代码许可证、公开数据许可、Gold 隐藏目标和 Sealed 材料分别治理。

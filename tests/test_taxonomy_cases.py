@@ -16,14 +16,15 @@ def test_candidate_taxonomy_is_balanced_and_not_gold() -> None:
         for line in path.read_text(encoding="utf-8").splitlines()
         if line
     ]
-    assert len(records) == 72
+    assert len(records) == 84
     counts = Counter(record["proposed_label"] for record in records)
+    assert len(counts) == 7
     assert set(counts.values()) == {12}
     assert all(record["gold_status"] == "not_gold" for record in records)
 
 
 def test_human_review_batch_does_not_leak_proposed_labels() -> None:
     batch = yaml.safe_load((TAXONOMY / "human_review_batch_01.yaml").read_text(encoding="utf-8"))
-    assert len(batch["cases"]) == 24
+    assert len(batch["cases"]) == 28
     assert all("proposed_label" not in case for case in batch["cases"])
     assert all(case["coder_label"] == "" for case in batch["cases"])

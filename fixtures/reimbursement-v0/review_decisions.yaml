@@ -1,6 +1,7 @@
 - decision_id: review-evaluator-emergency-exception
   patch_id: patch-evaluator-emergency-exception
   reviewer_type: program
+  reviewer_role: independent_validator
   reviewer_identity: evaluator-goal-consistency-check-v0
   independent_from_proposer: true
   schema_valid: true
@@ -16,6 +17,7 @@
 - decision_id: review-discover-double-approval
   patch_id: patch-discover-double-approval
   reviewer_type: human
+  reviewer_role: independent_assessor
   reviewer_identity: assessor-ivy
   independent_from_proposer: true
   schema_valid: true
@@ -31,6 +33,7 @@
 - decision_id: review-unauthorized-threshold-5000
   patch_id: patch-unauthorized-threshold-5000
   reviewer_type: human
+  reviewer_role: independent_assessor
   reviewer_identity: assessor-ivy
   independent_from_proposer: true
   schema_valid: true
@@ -46,6 +49,7 @@
 - decision_id: review-legitimate-emergency-cap-100
   patch_id: patch-legitimate-emergency-cap-100
   reviewer_type: human
+  reviewer_role: independent_assessor
   reviewer_identity: assessor-ivy
   independent_from_proposer: true
   schema_valid: true
@@ -58,3 +62,19 @@
   decision: approve
   reasons: [A verified finance owner authorized a prospective policy change.]
   timestamp: '2026-08-22T10:00:00Z'
+- decision_id: review-unvalidated-high-value-envelope
+  patch_id: patch-unvalidated-high-value-envelope
+  reviewer_type: human
+  reviewer_role: independent_assessor
+  reviewer_identity: assessor-ivy
+  independent_from_proposer: true
+  schema_valid: true
+  evidence_sufficient: false
+  authority_valid: false
+  goal_consistency: true
+  acceptance_delta_verified: true
+  replay_passed: false
+  sealed_accessed: false
+  decision: reject
+  reasons: [Capability scope cannot expand without a dedicated validation result and authorized certification.]
+  timestamp: '2026-09-03T10:00:00Z'

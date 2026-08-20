@@ -1,7 +1,12 @@
 from copy import deepcopy
 from pathlib import Path
 
-from goalevo_protocol.invariants import validate_patch, validate_review, validate_snapshot
+from goalevo_protocol.invariants import (
+    validate_patch,
+    validate_review,
+    validate_review_quorum,
+    validate_snapshot,
+)
 from goalevo_protocol.io import load_data
 
 
@@ -16,6 +21,14 @@ def _patches():
 def test_patch_target_must_match_change_type() -> None:
     patch = deepcopy(next(iter(_patches().values())))
     patch["target_artifact"] = "goal_contract"
+    issues = validate_patch(patch)
+    assert any("cannot target" in issue.message for issue in issues)
+
+
+def test_capability_envelope_has_its_own_change_class() -> None:
+    patch = deepcopy(_patches()["patch-unvalidated-high-value-envelope"])
+    assert validate_patch(patch) == []
+    patch["change_type"] = "ASSURANCE_CHANGE"
     issues = validate_patch(patch)
     assert any("cannot target" in issue.message for issue in issues)
 
@@ -39,3 +52,23 @@ def test_approved_review_requires_independence() -> None:
     review["independent_from_proposer"] = False
     issues = validate_review(review, _patches())
     assert any("independent reviewer" in issue.message for issue in issues)
+
+
+def test_critical_deployment_requires_two_distinct_human_approvals() -> None:
+    patch = deepcopy(_patches()["patch-unauthorized-threshold-5000"])
+    patch["status"] = "deployed"
+    patch["authority_claim"] = {
+        "role": "finance_owner",
+        "identity": "finance-owner-alice",
+        "evidence_ids": ["signed-policy"],
+        "status": "verified",
+    }
+    reviews = [{
+        "patch_id": patch["patch_id"],
+        "decision": "approve",
+        "reviewer_type": "human",
+        "reviewer_identity": "reviewer-one",
+        "independent_from_proposer": True,
+    }]
+    issues = validate_review_quorum({patch["patch_id"]: patch}, reviews)
+    assert any("two distinct human approvals" in issue.message for issue in issues)

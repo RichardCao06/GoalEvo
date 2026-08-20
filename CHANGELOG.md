@@ -1,20 +1,28 @@
 # Changelog
 
-## 0.1.0-draft — 2026-08-20
+## 0.1.0 — Protocol v0.1 candidate · 2026-08-20
+
+### Human decisions applied
+
+- Recorded D001–D014 from PR #1 comment `5351814513`;
+- authorized engineering-pilot work while preserving confirmatory blockers;
+- added anti-safety-by-abstention requirements;
+- separated Capability Envelope changes as a seventh class;
+- added evidence, authorization, and audit-record tampering as a non-compensable red line;
+- adopted risk-tiered authorization for the engineering pilot.
 
 ### Added
 
-- Phase 1 formal problem specification and causal assumption register;
-- Human decision packet D001–D014 and machine-readable decision gate;
-- Six-class change taxonomy and atomic Patch policy;
-- Draft Track A-H1, H2 and H3 estimands;
-- JSON Schema Draft 2020-12 data model;
-- Cross-artifact invariants, CLI, tests and GitHub Actions validation;
-- Reimbursement controlled-world fixture;
-- Candidate taxonomy cases and blinded human coding batch;
-- Human–Agent collaboration charter and governance templates;
-- Source-grounded protocol documents and decision traceability matrix.
+- consolidated `docs/protocol/PROTOCOL_V0.1.md`;
+- human Decision Record and Pilot Lock Manifest;
+- seven-class change taxonomy and atomic Patch policy;
+- Track A-H1, H2, H3 pilot estimands and hierarchical conclusion rule;
+- coverage, abstention precision, erroneous abstention rate, and selective risk;
+- expanded Schema and cross-artifact invariants;
+- reimbursement fixture cases for justified escalation and rejected capability-envelope expansion;
+- 84 balanced non-Gold taxonomy candidates and a 28-case blind human batch;
+- separate `pilot-check` and confirmatory `freeze-check` commands.
 
 ### Status
 
-No confirmatory protocol is frozen, no sealed test exists, and no hypothesis result is claimed.
+No confirmatory experiment has been authorized, no Sealed Test exists, no Gold labels have been created, and no hypothesis result is claimed.

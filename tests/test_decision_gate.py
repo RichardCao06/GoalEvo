@@ -1,41 +1,44 @@
 from copy import deepcopy
 from pathlib import Path
 
-from goalevo_protocol.decision_gate import decision_problems, freeze_problems
+from goalevo_protocol.decision_gate import (
+    confirmatory_decision_problems,
+    decision_problems,
+    freeze_problems,
+)
 from goalevo_protocol.io import load_data
 
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_draft_has_unresolved_human_decisions() -> None:
+def test_recorded_human_decisions_clear_engineering_pilot_gate() -> None:
     document = load_data(ROOT / "governance/human-decisions/phase-1.yaml")
-    problems = decision_problems(document)
-    assert problems
-    assert any(problem.decision_id == "D001" for problem in problems)
-
-
-def test_fully_signed_decision_document_can_clear_gate() -> None:
-    document = deepcopy(load_data(ROOT / "governance/human-decisions/phase-1.yaml"))
-    for decision in document["decisions"]:
-        decision["decision"] = "approve"
-        decision["human_rationale"] = "Approved for test."
-        decision["approved_by"] = "human-owner"
-        decision["approved_at"] = "2026-08-20T12:00:00Z"
-        decision["implementation_status"] = "applied"
-        decision["independent_review_status"] = "passed"
-        if decision["id"] == "D012":
-            decision["role_assignments"] = {
-                "research_owner": "owner",
-                "methods_statistics_lead": "methods",
-                "domain_lead": "domain",
-                "data_steward": "data",
-                "independent_custodian": "custodian",
-            }
     assert decision_problems(document) == []
 
 
-def test_current_protocol_is_not_freeze_eligible() -> None:
+def test_confirmatory_gate_remains_closed_until_independent_roles_are_filled() -> None:
+    document = load_data(ROOT / "governance/human-decisions/phase-1.yaml")
+    problems = confirmatory_decision_problems(document)
+    rendered = "\n".join(str(problem) for problem in problems)
+    assert "methods_statistics_lead" in rendered
+    assert "independent_custodian" in rendered
+    assert "confirmatory_experiment has not been authorized" in rendered
+
+
+def test_research_owner_is_required_for_engineering_pilot() -> None:
+    document = deepcopy(load_data(ROOT / "governance/human-decisions/phase-1.yaml"))
+    d012 = next(d for d in document["decisions"] if d["id"] == "D012")
+    d012["role_assignments"]["research_owner"] = {
+        "assignee": "",
+        "status": "vacant",
+        "required_before": "pilot",
+    }
+    assert any("research_owner" in problem.reason for problem in decision_problems(document))
+
+
+def test_protocol_v0_1_is_not_confirmatory_freeze_eligible() -> None:
     problems = freeze_problems(ROOT)
     assert problems
-    assert any("protocol status" in problem for problem in problems)
+    assert any("non-inferiority margin" in problem for problem in problems)
+    assert any("sealed" in problem for problem in problems)
