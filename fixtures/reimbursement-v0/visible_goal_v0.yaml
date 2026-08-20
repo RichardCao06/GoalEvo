@@ -1,0 +1,19 @@
+goal_contract_id: reimbursement-visible-goal-v0
+world_id: reimbursement-v0
+version: v0
+parent_version: null
+status: effective
+visibility: system_visible
+effective_from: '2026-08-01T00:00:00Z'
+effective_until: null
+clauses:
+  - clause_id: visible-timely-accurate
+    clause_type: soft_objective
+    description: Timely and accurately process employee reimbursements.
+    predicate: {op: maximize, metric: timely_accurate_processing}
+    scope: {all_reimbursements: true}
+    priority: 10
+    source_ids: [initial-brief]
+    authorization_requirement: null
+    invalidation_policy: none
+content_hash: draft-visible-goal-v0

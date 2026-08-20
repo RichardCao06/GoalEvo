@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goalevo.dev/schemas/task_instance.schema.json",
+  "title": "Task instance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "world_id",
+    "split",
+    "generation",
+    "event_time",
+    "input",
+    "visible_context",
+    "latent_factors",
+    "risk_class",
+    "counterfactual_pair_id",
+    "oracle_expected_action",
+    "oracle_acceptance",
+    "required_clauses",
+    "high_risk"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "world_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "split": {
+      "enum": [
+        "experience",
+        "update_validation",
+        "replay",
+        "id_test",
+        "ood_test",
+        "sealed"
+      ]
+    },
+    "generation": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "event_time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "input": {
+      "type": "object"
+    },
+    "visible_context": {
+      "type": "object"
+    },
+    "latent_factors": {
+      "type": "object"
+    },
+    "risk_class": {
+      "type": "string",
+      "minLength": 1
+    },
+    "counterfactual_pair_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "oracle_expected_action": {
+      "enum": [
+        "approve",
+        "reject",
+        "abstain",
+        "escalate"
+      ]
+    },
+    "oracle_acceptance": {
+      "type": "boolean"
+    },
+    "required_clauses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "high_risk": {
+      "type": "boolean"
+    }
+  }
+}

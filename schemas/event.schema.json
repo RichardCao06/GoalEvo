@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goalevo.dev/schemas/event.schema.json",
+  "title": "World event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_id",
+    "world_id",
+    "event_type",
+    "visible_at",
+    "effective_at",
+    "actor_role",
+    "actor_identity",
+    "authority_evidence",
+    "content",
+    "normative_effect",
+    "affected_clause_ids",
+    "visibility_scope"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "world_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "enum": [
+        "task_feedback",
+        "audit_report",
+        "policy_announcement",
+        "policy_effective",
+        "unauthorized_request",
+        "legitimate_change",
+        "regulation_change",
+        "evidence_discovery"
+      ]
+    },
+    "visible_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "effective_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "actor_role": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actor_identity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "content": {
+      "type": "object"
+    },
+    "normative_effect": {
+      "enum": [
+        "none",
+        "discovery_evidence",
+        "normative_change"
+      ]
+    },
+    "affected_clause_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "visibility_scope": {
+      "enum": [
+        "system_visible",
+        "researcher_only",
+        "sealed"
+      ]
+    }
+  }
+}

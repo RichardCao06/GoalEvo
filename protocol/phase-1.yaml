@@ -1,0 +1,94 @@
+protocol_id: goalevo-track-a-phase-1
+version: 0.1.0
+status: pilot_locked
+authorized_scope: engineering_pilot
+research_question: How can a self-evolving system distinguish genuine capability improvement, evaluator correction,
+  legitimate goal change, and unauthorized goalpost movement while preventing safety-by-abstention?
+evidence_order:
+- safety_floor
+- hidden_goal_utility
+- legitimate_adaptability
+- long_term_stability_and_cost
+abstention_policy:
+  anti_safety_by_abstention: true
+  frequent_or_erroneous_abstention_is_separate_failure_mode: true
+  required_metrics:
+  - coverage_rate
+  - abstention_precision
+  - erroneous_abstention_rate
+  - selective_risk
+hypotheses:
+- id: H1
+  label: safety_superiority
+  status: pilot_locked
+- id: H2
+  label: utility_noninferiority
+  status: pilot_locked
+- id: H3
+  label: legitimate_adaptability
+  status: pilot_locked
+methods:
+- M1
+- M2
+- M3
+primary_outcomes:
+  H1: unauthorized_relaxation_deployment_rate
+  H2: hidden_goal_utility
+  H3: post_change_utility_auc
+key_safety_outcomes:
+- severe_false_pass_rate
+secondary_outcomes:
+- dangerous_proposal_rate
+- coverage_rate
+- abstention_precision
+- erroneous_abstention_rate
+- selective_risk
+- time_to_recovery
+- correct_effective_time_rate
+- history_invalidation_recall
+noninferiority_margin:
+  status: pending_pilot
+  value: null
+  procedure_decision: D009
+exclusion_rules:
+- Infrastructure failures may be rerun only under a preregistered rule.
+- Method-caused failures remain part of the method result.
+- Frequent or erroneous abstention may not be silently removed or treated only as ordinary utility loss.
+failure_handling:
+  retain_all_failures: true
+  distinguish_infrastructure_and_method_failure: true
+statistical_models:
+  H1: mixed_effects_logistic
+  H2: mixed_effects_noninferiority
+  H3: mixed_effects_or_discrete_time_survival_after_pilot
+multiplicity_control:
+  strategy: hierarchical
+  order:
+  - H1
+  - H2
+  - H3
+joint_conclusion_rule:
+  safety_gate: H1
+  full_track_a_requires:
+  - H1
+  - H2
+  - H3
+  track_a_does_not_imply_external_validity: true
+first_micro_worlds:
+- reimbursement_approval
+- data_access_control
+responsibility_stage:
+  current_authorized_stage: engineering_pilot
+  missing_before_confirmatory:
+  - methods_statistics_lead
+  - independent_custodian
+sealed_test_policy:
+  status: not_created
+  builder_access: prohibited
+  experimental_agent_access: prohibited
+human_decision_file: governance/human-decisions/phase-1.yaml
+human_decision_gate: true
+pilot_lock_timestamp: '2026-08-20T06:24:19Z'
+pilot_lock_manifest: governance/freeze-manifests/protocol-v0.1.yaml
+freeze_timestamp: null
+content_hash: git-commit:5694556bda79ea14c9d3380969f688c8af7304cd

@@ -1,0 +1,14 @@
+decision_id: DXXX
+title: ''
+status: proposed  # proposed | approved | rejected | superseded
+proposed_by: ''
+proposed_at: ''
+context: ''
+options_considered: []
+decision: ''
+rationale: ''
+consequences: []
+approved_by: []
+approved_at: ''
+supersedes: null
+related_artifacts: []

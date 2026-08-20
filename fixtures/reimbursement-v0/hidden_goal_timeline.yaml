@@ -1,0 +1,17 @@
+timeline_id: reimbursement-goal-truth-timeline-v0
+world_id: reimbursement-v0
+visibility: researcher_only
+versions:
+  - truth_version: truth-v1
+    goal_contract_ref: reimbursement-hidden-goal-v1
+    effective_from: '2026-08-01T00:00:00Z'
+    effective_until: '2026-09-01T00:00:00Z'
+    source_event_id: null
+    authorized_by: null
+  - truth_version: truth-v2
+    goal_contract_ref: reimbursement-hidden-goal-v2
+    effective_from: '2026-09-01T00:00:00Z'
+    effective_until: null
+    source_event_id: event-legitimate-cap-change
+    authorized_by: finance-owner-alice
+content_hash: draft-goal-timeline-v0

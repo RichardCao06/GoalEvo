@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goalevo.dev/schemas/snapshot.schema.json",
+  "title": "System snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "snapshot_id",
+    "run_id",
+    "generation",
+    "parent_snapshot_id",
+    "harness_version",
+    "evaluator_version",
+    "goal_version",
+    "autonomy_version",
+    "assurance_version",
+    "capability_envelope_version",
+    "applied_patch_ids",
+    "artifact_hashes",
+    "created_at"
+  ],
+  "properties": {
+    "snapshot_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generation": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "parent_snapshot_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "harness_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evaluator_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "goal_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "autonomy_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "assurance_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "capability_envelope_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "applied_patch_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "artifact_hashes": {
+      "type": "object",
+      "minProperties": 6,
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^(sha256:[0-9a-f]{64}|draft-[a-z0-9-]+)$"
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

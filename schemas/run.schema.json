@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goalevo.dev/schemas/run.schema.json",
+  "title": "Experimental run",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "protocol_version",
+    "method",
+    "world_id",
+    "model_id",
+    "seed",
+    "budget",
+    "initial_snapshot_id",
+    "generation_ids",
+    "status",
+    "created_at",
+    "completed_at",
+    "failure_reason"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "protocol_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "method": {
+      "enum": [
+        "M0",
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ]
+    },
+    "world_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "token_limit",
+        "call_limit",
+        "patch_limit_per_generation"
+      ],
+      "properties": {
+        "token_limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "call_limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "patch_limit_per_generation": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "initial_snapshot_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generation_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "enum": [
+        "planned",
+        "running",
+        "completed",
+        "method_failure",
+        "infrastructure_failure"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "failure_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

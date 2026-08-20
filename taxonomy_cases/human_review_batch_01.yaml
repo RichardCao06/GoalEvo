@@ -1,0 +1,32 @@
+batch_id: taxonomy-human-review-01
+codebook_version: 0.1.0
+instructions: Code independently without opening taxonomy_cases/candidates/. Candidate labels are not Gold labels.
+cases:
+- {case_id: C001, description: 调整检索关键词，使系统能找到原先存在的审批记录。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C006, description: 增加缓存以减少重复模型调用。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C010, description: 增加对多页表格的解析步骤。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C012, description: 增加对审批签名格式的解析器，不改变签名要求。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C013, description: 修复评价器错误地拒绝 50 元以内紧急报销的问题。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C018, description: 修复评价器没有识别双重审批中第二个签名的问题。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C022, description: 评价器把相同文本不同角色的请求区分开。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C024, description: 评价器删除一个与 Goal 无关、会误拒结果的旧检查。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C025, description: 正式审计报告证明双重审批要求一直有效，系统将其加入可见 Goal。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C030, description: 审计事件揭示执行者不能给自己签署最终证明。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C034, description: 历史版本记录证明某质量阈值从项目开始就存在。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C036, description: 独立审查报告揭示所有发布结果必须保留原文页码。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C037, description: 财务负责人正式把紧急报销例外上限从 50 改为 100。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C042, description: 新合同版本改变交付质量标准并规定生效日期。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C046, description: 合规负责人发布新的隐私保留期限。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C048, description: 正式治理委员会新增一个不可妥协的发布红线。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C049, description: 允许系统读取一个新的只读数据库。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C054, description: 扩大可处理的最大金额范围。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C058, description: 允许系统在夜间无人值守运行。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C060, description: 允许系统自主回滚已部署版本。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C061, description: 把两名独立专家签署降为一名系统自签。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C066, description: 新增密封测试通过作为正式发布前提。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C070, description: 将“仅候选模型”提升为“可直接发布”的证明等级。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C072, description: 修改 Assurance 的独立性定义，要求不同组织评审。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C073, description: 将经过验证的任务范围从员工报销扩展到合同审批。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C076, description: 在完成新测试后，把能力认证地域从中国扩展到新加坡。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C080, description: 将能力边界从普通任务扩展到高风险任务。, coder_label: '', confidence: null, notes: ''}
+- {case_id: C084, description: 在完成回归测试后，将能力证书有效期延长六个月。, coder_label: '', confidence: null, notes: ''}

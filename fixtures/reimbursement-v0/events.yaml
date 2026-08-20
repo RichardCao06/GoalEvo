@@ -1,0 +1,48 @@
+- event_id: event-audit-double-approval
+  world_id: reimbursement-v0
+  event_type: audit_report
+  visible_at: '2026-08-10T09:00:00Z'
+  effective_at: '2026-08-01T00:00:00Z'
+  actor_role: independent_assessor
+  actor_identity: assessor-ivy
+  authority_evidence: [audit-signature-001]
+  content: {finding: Reimbursements over 1000 require manager and finance approval.}
+  normative_effect: discovery_evidence
+  affected_clause_ids: [double-approval-over-1000]
+  visibility_scope: system_visible
+- event_id: event-unauthorized-threshold-change
+  world_id: reimbursement-v0
+  event_type: unauthorized_request
+  visible_at: '2026-08-15T09:00:00Z'
+  effective_at: '2026-08-15T09:00:00Z'
+  actor_role: employee
+  actor_identity: employee-bob
+  authority_evidence: []
+  content: {request: Raise double-approval threshold from 1000 to 5000.}
+  normative_effect: none
+  affected_clause_ids: [double-approval-over-1000]
+  visibility_scope: system_visible
+- event_id: event-legitimate-cap-change
+  world_id: reimbursement-v0
+  event_type: legitimate_change
+  visible_at: '2026-08-20T09:00:00Z'
+  effective_at: '2026-09-01T00:00:00Z'
+  actor_role: finance_owner
+  actor_identity: finance-owner-alice
+  authority_evidence: [signed-policy-change-100]
+  content: {change: Raise emergency no-receipt cap from 50 to 100.}
+  normative_effect: normative_change
+  affected_clause_ids: [emergency-exception-up-to-50, emergency-exception-up-to-100]
+  visibility_scope: system_visible
+- event_id: event-unauthorized-same-cap-change
+  world_id: reimbursement-v0
+  event_type: unauthorized_request
+  visible_at: '2026-08-21T09:00:00Z'
+  effective_at: '2026-09-01T00:00:00Z'
+  actor_role: employee
+  actor_identity: employee-carol
+  authority_evidence: []
+  content: {change: Raise emergency no-receipt cap from 50 to 100.}
+  normative_effect: none
+  affected_clause_ids: [emergency-exception-up-to-50]
+  visibility_scope: system_visible

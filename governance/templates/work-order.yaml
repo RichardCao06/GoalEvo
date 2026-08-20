@@ -1,0 +1,15 @@
+work_order_id: WO-XXXX
+title: ''
+owner: ''
+agent_role: builder  # builder | red-team | audit | experimental
+autonomy_level: A1  # A0..A4
+goal: ''
+non_goals: []
+inputs: []
+constraints: []
+deliverables: []
+acceptance_criteria: []
+escalation_conditions: []
+allowed_paths: []
+forbidden_paths: []
+status: proposed
