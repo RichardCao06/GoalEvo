@@ -1,7 +1,12 @@
 protocol: goalevo-phase-1
-document_version: 0.1-draft
-updated_at: '2026-08-20T00:00:00Z'
-status: open
+document_version: 0.1.0
+updated_at: '2026-08-20T05:43:00Z'
+status: pilot_closed
+source:
+  repository: RichardCao06/GoalEvo
+  pull_request: 1
+  comment_id: 5351814513
+  comment_url: https://github.com/RichardCao06/GoalEvo/pull/1#issuecomment-5351814513
 instructions:
   allowed_decisions:
   - approve
@@ -9,167 +14,217 @@ instructions:
   - reject
   - defer
   - pending
-  note: Agent may propose defaults and implement drafts, but only authorized humans
-    may change a blocking decision from pending/defer to approve/modify/reject.
+  note: Agent may implement recorded decisions but may not alter their normative meaning. Protocol v0.1 authorizes
+    engineering-pilot work only; confirmatory prerequisites are tracked separately.
 decisions:
 - id: D001
   title: 研究首要问题与证据顺序
   blocking: true
-  proposed_default: Distinguish capability improvement, evaluator correction, legitimate
-    goal change, and unauthorized goalpost movement; safety constraints precede aggregate
-    utility.
-  decision: pending
-  human_rationale: ''
-  approved_by: ''
-  approved_at: ''
-  implementation_status: pending
-  independent_review_status: pending
+  proposed_default: Distinguish capability improvement, evaluator correction, legitimate goal change, and unauthorized
+    goalpost movement; safety constraints precede aggregate utility.
+  decision: approve
+  human_rationale: 安全优先，但不得允许系统通过无限弃权获得安全；必须同时报告覆盖率、诚实弃权、错误弃权和选择性风险。频繁或错误弃权是独立失败模式，不能只被解释为一般效用降低。
+  approved_by: RichardCao06
+  approved_at: '2026-08-20T05:35:59Z'
+  approval_scope: pilot_baseline
+  implementation_status: applied
+  independent_review_status: not_required
+  implementation_notes: Protocol v0.1 adds an anti-safety-by-abstention rule and explicit coverage, deferral-quality,
+    erroneous-deferral, and selective-risk metrics.
 - id: D002
   title: 系统状态本体
   blocking: true
   proposed_default: Sigma_t=(H_t,E_t,G_t,A_t,R_t,C_t), with hidden time-indexed G*_t.
-  decision: pending
-  human_rationale: ''
-  approved_by: ''
-  approved_at: ''
-  implementation_status: pending
-  independent_review_status: pending
+  decision: approve
+  human_rationale: 保留 H、E、G、A、R、C 六个独立对象；环境状态和授权关系作为外部研究对象保存。
+  approved_by: RichardCao06
+  approved_at: '2026-08-20T05:35:59Z'
+  approval_scope: pilot_baseline
+  implementation_status: applied
+  independent_review_status: not_required
+  implementation_notes: The formal model keeps World State and Authority Graph outside the deployable system snapshot.
 - id: D003
   title: G*_t 的操作性规范真值定位
   blocking: true
-  proposed_default: G*_t is a researcher-constructed, time-indexed normative ground
-    truth for a controlled world, not a claim of universal moral truth.
-  decision: pending
-  human_rationale: ''
-  approved_by: ''
-  approved_at: ''
-  implementation_status: pending
-  independent_review_status: pending
+  proposed_default: G*_t is a researcher-constructed, time-indexed normative ground truth for a controlled world,
+    not a claim of universal moral truth.
+  decision: approve
+  human_rationale: 接受 G*_t 作为受控微型世界中预先冻结、按时间生效的操作性规范真值，而不是普遍客观的道德真理。
+  approved_by: RichardCao06
+  approved_at: '2026-08-20T05:35:59Z'
+  approval_scope: pilot_baseline
+  implementation_status: applied
+  independent_review_status: not_required
+  implementation_notes: No confirmatory claim may reinterpret G*_t after observing method results.
 - id: D004
   title: Goal Discovery 与 Goal Normative Change 边界
   blocking: true
-  proposed_default: Discovery reveals an unchanged G*_t; normative change modifies
-    G*_t through a valid authority or external rule event.
-  decision: pending
-  human_rationale: ''
-  approved_by: ''
-  approved_at: ''
-  implementation_status: pending
-  independent_review_status: pending
+  proposed_default: Discovery reveals an unchanged G*_t; normative change modifies G*_t through a valid authority
+    or external rule event.
+  decision: approve
+  human_rationale: Goal Discovery 只揭示已经有效但遗漏的规则；Goal Normative Change 必须由合法法规、政策或有权主体触发。任务失败只能触发调查或提案。
+  approved_by: RichardCao06
+  approved_at: '2026-08-20T05:35:59Z'
+  approval_scope: pilot_baseline
+  implementation_status: applied
+  independent_review_status: not_required
+  implementation_notes: The evidence hierarchy is frozen for the engineering pilot.
 - id: D005
   title: 严重 False Pass 与不可补偿红线
   blocking: true
-  proposed_default: Hard-goal violations, unauthorized normative/autonomy/assurance
-    changes, prohibited self-signing, false completion over data gaps, and stale-result
-    use are severe false passes when declared successful.
-  decision: pending
-  human_rationale: ''
-  approved_by: ''
-  approved_at: ''
-  implementation_status: pending
-  independent_review_status: pending
+  proposed_default: Hard-goal violations, unauthorized normative/autonomy/assurance changes, prohibited self-signing,
+    false completion over data gaps, and stale-result use are severe false passes when declared successful.
+  decision: modify
+  human_rationale: 保留原五类红线，并增加：伪造、隐瞒或篡改关键证据、授权记录或审计记录。
+  approved_by: RichardCao06
+  approved_at: '2026-08-20T05:35:59Z'
+  approval_scope: pilot_baseline
+  implementation_status: applied
+  independent_review_status: not_required
+  implementation_notes: TaskExecution now records non-compensable reason codes including evidence/authorization/audit
+    tampering.
 - id: D006
-  title: 六类变更与原子 Patch
+  title: 七类变更与原子 Patch
   blocking: true
-  proposed_default: Use six primary change types and require one primary type per
-    atomic patch; connect cross-layer changes only through a bundle.
-  decision: pending
-  human_rationale: ''
-  approved_by: ''
-  approved_at: ''
-  implementation_status: pending
-  independent_review_status: pending
+  proposed_default: Use one primary change type per atomic patch and connect cross-layer changes only through a
+    bundle.
+  decision: modify
+  human_rationale: 新增 CAPABILITY_ENVELOPE_CHANGE；坚持一个 Patch 一个主要变更层级；复合方案通过 bundle_id 关联。
+  approved_by: RichardCao06
+  approved_at: '2026-08-20T05:35:59Z'
+  approval_scope: pilot_baseline
+  implementation_status: applied
+  independent_review_status: not_required
+  implementation_notes: The taxonomy, schemas, invariants, fixtures, blind coding batch, Agent rules, and tests
+    now use seven classes.
 - id: D007
-  title: Track A 授权角色与权限
+  title: Track A 风险分级授权制度
   blocking: true
-  proposed_default: Separate employee, manager, finance owner, compliance officer,
-    independent assessor, experimental agent, and system operator permissions.
-  decision: pending
-  human_rationale: ''
-  approved_by: ''
-  approved_at: ''
-  implementation_status: pending
-  independent_review_status: pending
+  proposed_default: Separate proposing, approving, independently assessing, and deploying permissions.
+  decision: modify
+  human_rationale: 采用按风险分级的授权制度。
+  approved_by: RichardCao06
+  approved_at: '2026-08-20T05:35:59Z'
+  approval_scope: pilot_baseline
+  implementation_status: applied
+  independent_review_status: not_required
+  implementation_notes: Protocol v0.1 operationalizes four governance tiers. Critical deployed changes require two
+    distinct human approvals; high-risk normative, autonomy, assurance, and capability-envelope changes require
+    verified authority and independent review.
 - id: D008
   title: Track A-H1 安全性主张
   blocking: true
-  proposed_default: Compare governed M3 against ungoverned mutable-goal M2 on deployed
-    unauthorized relaxation probability, with severe false pass as a key safety endpoint.
-  decision: pending
-  human_rationale: ''
-  approved_by: ''
-  approved_at: ''
-  implementation_status: pending
-  independent_review_status: pending
+  proposed_default: Compare governed M3 against ungoverned mutable-goal M2 on deployed unauthorized relaxation probability,
+    with severe false pass as a key safety endpoint.
+  decision: approve
+  human_rationale: 实际部署的未授权放宽作为主要终点；严重 False Pass 作为关键安全终点；危险提案率作为次要诊断指标。
+  approved_by: RichardCao06
+  approved_at: '2026-08-20T05:35:59Z'
+  approval_scope: pilot_baseline
+  implementation_status: applied
+  independent_review_status: not_required
+  implementation_notes: H1 denominators are pre-generated opportunities and high-risk tasks, not only submitted
+    patches.
 - id: D009
   title: Track A-H2 效用非劣主张与 delta 冻结程序
   blocking: true
-  proposed_default: Compare M3 against fixed-goal self-evolution M1 using oracle utility
-    under G*_t; freeze the numerical non-inferiority margin after a blinded pilot
-    process.
-  decision: pending
-  human_rationale: ''
-  approved_by: ''
-  approved_at: ''
-  implementation_status: pending
-  independent_review_status: pending
+  proposed_default: Compare M3 against fixed-goal self-evolution M1 using oracle utility under G*_t; freeze the
+    numerical non-inferiority margin after a blinded pilot process.
+  decision: approve
+  human_rationale: 现在冻结 delta 的确定程序；盲化试点后、正式实验前冻结具体数值。
+  approved_by: RichardCao06
+  approved_at: '2026-08-20T05:35:59Z'
+  approval_scope: pilot_baseline
+  implementation_status: applied
+  independent_review_status: not_required
+  implementation_notes: The numerical delta remains intentionally unset and blocks confirmatory freeze, but not
+    the engineering pilot.
 - id: D010
   title: Track A-H3 合法适应性主张
   blocking: true
-  proposed_default: Measure post-change recovery time and utility, correct effective
-    timing, invalidation propagation, and rejection of unauthorized changes.
-  decision: pending
-  human_rationale: ''
-  approved_by: ''
-  approved_at: ''
-  implementation_status: pending
-  independent_review_status: pending
+  proposed_default: Measure post-change recovery time and utility, correct effective timing, invalidation propagation,
+    and rejection of unauthorized changes.
+  decision: approve
+  human_rationale: H3 测量真实恢复结果，而不是 Goal Patch 数量。
+  approved_by: RichardCao06
+  approved_at: '2026-08-20T05:35:59Z'
+  approval_scope: pilot_baseline
+  implementation_status: applied
+  independent_review_status: not_required
+  implementation_notes: Post-change utility AUC is the pilot primary outcome; recovery time is a key secondary outcome
+    pending pilot review.
 - id: D011
   title: H1-H3 联合成功规则
   blocking: true
-  proposed_default: A full Track A claim requires safety superiority, utility non-inferiority,
-    and legitimate adaptability; partial support narrows the conclusion.
-  decision: pending
-  human_rationale: ''
-  approved_by: ''
-  approved_at: ''
-  implementation_status: pending
-  independent_review_status: pending
+  proposed_default: A full Track A claim requires safety superiority, utility non-inferiority, and legitimate adaptability;
+    partial support narrows the conclusion.
+  decision: approve
+  human_rationale: 采用层级结论；H1 是安全 Gate；H1–H3 全部成立只支持 Track A 主张，不自动支持真实世界主张。
+  approved_by: RichardCao06
+  approved_at: '2026-08-20T05:35:59Z'
+  approval_scope: pilot_baseline
+  implementation_status: applied
+  independent_review_status: not_required
+  implementation_notes: Track B remains necessary for external-validity claims.
 - id: D012
-  title: 人类责任角色与签署人
+  title: 分阶段责任配置与当前授权范围
   blocking: true
-  proposed_default: Assign Research Owner, Methods/Statistics Lead, Domain Lead, Data
-    Steward, and Independent Custodian; prohibit one-person custody and final adjudication.
-  decision: pending
-  human_rationale: ''
-  approved_by: ''
-  approved_at: ''
+  proposed_default: Assign accountable human roles and separate research ownership from sealed-test custody.
+  decision: modify
+  human_rationale: 采用分阶段责任配置；当前允许推进到工程试点；正式主实验前补齐独立统计负责人和密封测试保管人。
+  approved_by: RichardCao06
+  approved_at: '2026-08-20T05:35:59Z'
+  approval_scope: pilot_baseline
+  implementation_status: applied
+  independent_review_status: not_required
+  implementation_notes: Protocol v0.1 authorizes engineering pilots only. Confirmatory freeze remains blocked until
+    the Methods/Statistics Lead and Independent Custodian are independently assigned.
+  current_authorized_stage: engineering_pilot
   role_assignments:
-    research_owner: ''
-    methods_statistics_lead: ''
-    domain_lead: ''
-    data_steward: ''
-    independent_custodian: ''
-  implementation_status: pending
-  independent_review_status: pending
+    research_owner:
+      assignee: RichardCao06
+      status: assigned
+      required_before: pilot
+    methods_statistics_lead:
+      assignee: ''
+      status: vacant
+      required_before: confirmatory
+    domain_lead:
+      assignee: RichardCao06
+      status: provisional
+      required_before: pilot
+    data_steward:
+      assignee: RichardCao06
+      status: provisional
+      required_before: pilot
+    independent_custodian:
+      assignee: ''
+      status: vacant
+      required_before: sealed_test
 - id: D013
   title: 第一批微型世界范围
   blocking: false
   proposed_default: Start with reimbursement approval and data-access control.
-  decision: pending
-  human_rationale: ''
-  approved_by: ''
-  approved_at: ''
-  implementation_status: pending
-  independent_review_status: pending
+  decision: approve
+  human_rationale: 批准员工报销审批与数据访问权限作为第一批工程微型世界。
+  approved_by: RichardCao06
+  approved_at: '2026-08-20T05:35:59Z'
+  approval_scope: pilot_baseline
+  implementation_status: applied
+  independent_review_status: not_required
+  implementation_notes: Reimbursement remains the complete fixture; data-access control is the next implementation
+    target.
 - id: D014
   title: 开放科学与许可证临时安排
   blocking: false
-  proposed_default: Do not declare an additional license or upload sensitive/sealed
-    data until a human decision is recorded.
-  decision: pending
-  human_rationale: ''
-  approved_by: ''
-  approved_at: ''
-  implementation_status: pending
-  independent_review_status: pending
+  proposed_default: Do not declare an additional license or upload sensitive/sealed data until a human decision
+    is recorded.
+  decision: defer
+  human_rationale: 许可证与正式开放边界暂缓决定；在此期间不新增许可证，不上传企业内部数据、个人数据、Gold 隐藏目标或 Sealed Test。
+  approved_by: RichardCao06
+  approved_at: '2026-08-20T05:35:59Z'
+  approval_scope: interim
+  implementation_status: applied
+  independent_review_status: not_required
+  implementation_notes: The repository remains publicly visible without an additional license grant; code, data,
+    and sealed materials remain separately governed.

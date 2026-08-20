@@ -1,0 +1,29 @@
+manifest_id: goalevo-protocol-v0.1-pilot-lock
+protocol_id: goalevo-track-a-phase-1
+protocol_version: 0.1.0
+status: candidate
+authorized_scope: engineering_pilot
+human_decision_source: governance/decision-records/phase-1-v0.1.yaml
+semantic_baseline_commit: pending
+attestation_method: The next commit will attest the immediately preceding semantic baseline commit; no self-referential commit hash is claimed.
+artifact_groups:
+- protocol-and-human-decisions
+- seven-class-taxonomy
+- risk-tier-governance
+- schemas-and-cross-artifact-invariants
+- reimbursement-fixture
+- abstention-and-selective-risk-metrics
+- tests-ci-and-traceability
+validation_commands:
+- python -m goalevo_protocol.cli validate
+- python -m goalevo_protocol.cli decisions
+- python -m goalevo_protocol.cli pilot-check
+- pytest -q
+confirmatory_blockers:
+- numerical H2 non-inferiority margin is pending a blinded pilot
+- formal sample-size and power plan is not frozen
+- final statistical formulas and rerun rules are not frozen
+- Methods / Statistics Lead is vacant
+- Independent Custodian is vacant
+- Sealed Test has not been created
+created_at: '2026-08-20T05:43:00Z'

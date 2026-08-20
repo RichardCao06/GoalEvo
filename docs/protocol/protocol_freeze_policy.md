@@ -1,45 +1,71 @@
-# Protocol Freeze 与 Amendment 策略
+# Protocol Lock、Freeze 与 Amendment 策略
 
-## 1. 三个阶段
+## 1. 两个不同 Gate
 
-### v0.1 Concept Draft
+### Protocol v0.1 — Pilot-Locked Engineering Baseline
 
-允许修改概念、分类和 Schema，但每次修改必须留记录。不得运行确认性主实验。
+在人类 D001–D013 决定完成并被一致地落实到文档、Schema、Fixture 和测试后，v0.1 可以锁定为工程试点基线。
 
-### v0.2 Pilot-Locked
+它冻结：
 
-完成工程试点后冻结：
+- 研究对象和状态本体；
+- 七类变更及原子 Patch；
+- Severe False Pass 红线；
+- 风险分级授权的工程默认规则；
+- H1–H3 的问题方向、主要比较和工程试点 estimand；
+- 反无限弃权的指标和分母；
+- 数据语义、追溯和角色边界。
 
-- 主要 estimand；
-- 非劣界限数值；
+它不授权正式确认性主实验。
+
+### Confirmatory Frozen
+
+正式主实验前还必须冻结：
+
+- H2 数值化非劣界限；
 - 样本与功效方案；
 - 正式统计公式；
 - 排除与重跑规则；
-- Sealed Test 生成和保管程序。
+- 独立 Methods / Statistics Lead；
+- Independent Custodian；
+- Sealed Test 生成、保管和解封程序；
+- 所有确认性代码与配置哈希。
 
-### v1.0 Confirmatory Frozen
+## 2. `pilot-check`
 
-正式主实验前冻结所有确认性内容和代码哈希。之后改变主要假设、指标、分母、样本或测试，只能通过 Protocol Amendment，并将受影响结果降为探索性或重新开展独立确认。
-
-## 2. Freeze Gate
-
-`goalevo freeze-check` 至少检查：
+`goalevo pilot-check` 至少检查：
 
 - 所有阻塞性人类决定已批准或明确修改；
-- 角色签署完整；
+- Research Owner、工程试点 Domain Lead 和 Data Steward 已有可追责身份；
+- 协议状态为 `pilot_locked`；
 - Schema 和 Fixture 通过；
 - 测试通过；
-- 无未解决高风险审计项；
-- 协议状态与版本一致；
-- Sealed 数据访问策略已记录。
+- Pilot Lock Manifest 指向语义基线 Git 提交；
+- 当前授权范围仅为 `engineering_pilot`。
 
-## 3. Amendment
+## 3. `freeze-check`
+
+`goalevo freeze-check` 用于正式确认性冻结，除全部 Pilot Gate 外还检查：
+
+- 全部独立角色已补齐；
+- Research Owner 与 Independent Custodian 不同；
+- 数值化非劣界限已冻结；
+- 正式统计和样本方案已冻结；
+- Sealed Test 已创建并处于密封状态；
+- 当前授权范围为 `confirmatory_experiment`；
+- 协议状态为 `frozen`。
+
+v0.1 应通过 `pilot-check`，但应继续无法通过 `freeze-check`。
+
+## 4. Amendment
 
 每项 Amendment 必须说明：
 
 - 为什么修改；
-- 修改了哪些文件、Schema、指标和测试；
-- 是否查看过主结果；
-- 对确认性结论的影响；
-- 是否需要重新分析或新密封测试；
+- 修改了哪些人类决定、文件、Schema、指标和测试；
+- 是否查看过试点或主结果；
+- 对工程试点和确认性结论的影响；
+- 是否需要重新分析或新 Sealed Test；
 - 谁提出、谁审查、谁批准。
+
+改变 D001–D013 的规范性含义不能作为普通代码修复静默生效。
