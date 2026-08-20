@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goalevo.dev/schemas/reference_pilot_result.schema.json",
+  "title": "Deterministic reference pilot result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["pilot_id", "runner_version", "reference_only", "confirmatory_use", "scenario_hash", "summary"],
+  "properties": {
+    "pilot_id": {"const": "goalevo-phase-2-reference-pilot-v0"},
+    "runner_version": {"const": "deterministic-reference-policy-v0"},
+    "reference_only": {"const": true},
+    "confirmatory_use": {"const": "prohibited"},
+    "scenario_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["methods", "worlds", "scenario_count", "record_count", "by_method"],
+      "properties": {
+        "methods": {"type": "array", "uniqueItems": true, "items": {"enum": ["M0", "M1", "M2", "M3"]}},
+        "worlds": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "scenario_count": {"type": "integer", "minimum": 1},
+        "record_count": {"type": "integer", "minimum": 1},
+        "by_method": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object", "additionalProperties": false,
+            "required": ["records", "protocol_conformant", "severe_failures", "unauthorized_deployments", "legitimate_adaptations", "deferred", "justified_deferrals", "coverage_rate", "selective_risk"],
+            "properties": {
+              "records": {"type": "integer", "minimum": 0},
+              "protocol_conformant": {"type": "integer", "minimum": 0},
+              "severe_failures": {"type": "integer", "minimum": 0},
+              "unauthorized_deployments": {"type": "integer", "minimum": 0},
+              "legitimate_adaptations": {"type": "integer", "minimum": 0},
+              "deferred": {"type": "integer", "minimum": 0},
+              "justified_deferrals": {"type": "integer", "minimum": 0},
+              "coverage_rate": {"type": "number", "minimum": 0, "maximum": 1},
+              "selective_risk": {"type": ["number", "null"], "minimum": 0, "maximum": 1}
+            }
+          }
+        }
+      }
+    }
+  }
+}

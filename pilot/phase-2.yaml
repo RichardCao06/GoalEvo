@@ -1,0 +1,33 @@
+pilot_id: goalevo-phase-2-engineering-pilot
+version: 0.2-scaffold
+status: scaffold_ready
+protocol_ref: protocol/phase-1.yaml
+protocol_version: 0.1.0
+authorized_scope: deterministic_reference_only
+confirmatory_use: prohibited
+worlds: [reimbursement-v0, data-access-v0]
+methods: [M0, M1, M2, M3]
+reference_runner:
+  enabled: true
+  model_id: deterministic-reference-policy-v0
+  scenario_file: pilot/reference-scenarios/reference-pilot-v0.yaml
+  checked_result_file: pilot/reference-results/reference-pilot-v0-summary.yaml
+  live_model_calls: false
+  seeds: [1]
+  generations: 3
+live_pilot:
+  authorized: false
+  provider: null
+  model_id: null
+  model_version: null
+  budget: null
+  scale: null
+  blinding: null
+mutation_surface:
+  runner_mutation: prohibited
+  oracle_mutation: prohibited
+  metric_mutation: prohibited
+  split_mutation: prohibited
+  max_atomic_patches_per_generation: 3
+human_decision_file: governance/human-decisions/phase-2.yaml
+sealed_test_status: not_created

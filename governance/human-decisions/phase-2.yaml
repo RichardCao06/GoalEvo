@@ -1,0 +1,126 @@
+protocol: goalevo-phase-2-engineering-pilot
+document_version: 0.2-scaffold
+updated_at: '2026-08-20T07:00:00Z'
+status: open
+instructions:
+  allowed_decisions: [approve, modify, reject, defer, pending, authorize_live_pilot]
+  note: Agent may build and run deterministic reference infrastructure. Only an authorized human may enable external or paid model calls.
+decisions:
+- id: P2D001
+  title: 工程试点用途边界
+  blocks: [live_pilot]
+  proposed_default: Engineering pilot results are non-confirmatory and may only be used for debugging, variance estimation, and Protocol v0.2 preparation.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+- id: P2D002
+  title: 真实模型、服务商与固定版本
+  blocks: [live_pilot]
+  proposed_default: Select one version-pinned primary model and use any second model only for stratified replication.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+  parameters: {provider: '', model_id: '', version: '', second_model_id: ''}
+- id: P2D003
+  title: 外部 API 与数据保留政策
+  blocks: [live_pilot]
+  proposed_default: Synthetic data only; prohibit secrets, personal or enterprise data, Gold labels, and sealed material; minimize provider retention.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+- id: P2D004
+  title: 费用与资源硬上限
+  blocks: [live_pilot]
+  proposed_default: Set per-run and whole-pilot call, token, wall-clock, and dollar ceilings before launch; no silent budget increase.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+  parameters: {pilot_cost_usd: null, per_run_calls: null, per_run_tokens: null, wall_clock_hours: null}
+- id: P2D005
+  title: 试点规模
+  blocks: [live_pilot]
+  proposed_default: Two worlds, M0-M3, three seeds, three generations, with 8-12 experience, validation, and replay tasks per generation.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+- id: P2D006
+  title: 允许修改的自进化表面
+  blocks: [live_pilot]
+  proposed_default: Structured Harness, Evaluator, and governed contract proposals only; prohibit runner, Oracle, metric, and split mutation; maximum three atomic patches per generation.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+- id: P2D007
+  title: 方法公平性
+  blocks: [live_pilot]
+  proposed_default: M0-M3 share the same model, tools, contexts, task order distribution, and resource budgets; only governance switches differ.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+- id: P2D008
+  title: 分类盲评人员
+  blocks: [taxonomy_gold, v0.2_freeze]
+  proposed_default: Two independent coders and a third adjudicator; no coder sees Agent-proposed labels before submission.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+  role_assignments: {coder_1: '', coder_2: '', adjudicator: ''}
+- id: P2D009
+  title: 方法盲化、随机化与结果访问
+  blocks: [live_pilot]
+  proposed_default: Independent label custodian, paired seeds, pre-generated task order, and anonymous run-level integrity review before method summaries are revealed.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+  role_assignments: {method_label_custodian: ''}
+- id: P2D010
+  title: 工程成功与停止规则
+  blocks: [live_pilot]
+  proposed_default: Continue only if runs are replayable, metrics recomputable, resources fair, no hidden leakage occurs, and tasks avoid severe ceiling or floor effects.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+- id: P2D011
+  title: Pilot 人工升级与高风险审批
+  blocks: [live_pilot]
+  proposed_default: Assign a Pilot Approver and independent Reviewer; no unattended deployment of T2/T3 patches, and T3 retains two-human approval.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+  role_assignments: {pilot_approver: '', independent_reviewer: ''}
+- id: P2D012
+  title: 真实模型调用启动授权
+  blocks: [live_pilot]
+  proposed_default: Keep external and paid model calls disabled until a separate authorize_live_pilot decision is recorded after P2D002-P2D011.
+  decision: defer
+  human_rationale: No external or paid calls are authorized by the scaffold PR.
+  approved_by: RichardCao06
+  approved_at: '2026-08-20T07:00:00Z'
+- id: P2D013
+  title: 数据访问权限世界规范语义
+  blocks: [live_pilot]
+  proposed_default: Use least privilege, purpose limitation, sensitive-data dual approval, temporary expiry, audit logging, and authorized prospective policy change; obtain human security/data-governance review before live use.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+  role_assignments: {world_semantics_reviewer: ''}
+- id: P2D014
+  title: 试点结果与 H2 delta 决策访问边界
+  blocks: [v0.2_freeze]
+  proposed_default: Produce blinded variance and difficulty summaries before labelled method comparisons; delta requires Research, Statistics, and Domain sign-off.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
