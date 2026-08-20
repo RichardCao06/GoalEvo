@@ -120,4 +120,4 @@
 5. 修改 Codebook 后用新案例复测；
 6. 冻结 Gold Set 和版本哈希。
 
-本仓库的 `taxonomy_cases/candidate_cases.jsonl` 仅是 Agent 提出的候选标签，不是正式 Gold 标签。
+本仓库的 `taxonomy_cases/candidates/*.jsonl` 仅是 Agent 提出的候选标签，不是正式 Gold 标签。

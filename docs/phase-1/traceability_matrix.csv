@@ -1,7 +1,7 @@
 requirement_id,source_decision,protocol_artifact,schema_or_code,test,status
 R001,D001,docs/protocol/formal_problem.md,schemas/study_protocol.schema.json,tests/test_decision_gate.py,draft
-R002,D002,docs/protocol/formal_problem.md,schemas/snapshot.schema.json,tests/test_fixture_validation.py,draft
-R003,D003,docs/protocol/formal_problem.md,schemas/goal_contract.schema.json,tests/test_fixture_validation.py,draft
+R002,D002,docs/protocol/formal_problem.md,schemas/snapshot.schema.json,tests/test_repository_validation.py,draft
+R003,D003,docs/protocol/formal_problem.md,schemas/goal_contract.schema.json,tests/test_repository_validation.py,draft
 R004,D004,docs/protocol/change_taxonomy.md,schemas/patch_proposal.schema.json,tests/test_cross_invariants.py,draft
 R005,D005,docs/protocol/metrics.md,schemas/task_execution.schema.json,tests/test_metrics.py,draft
 R006,D006,docs/protocol/change_taxonomy.md,schemas/patch_proposal.schema.json,tests/test_cross_invariants.py,draft

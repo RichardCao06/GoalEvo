@@ -120,7 +120,6 @@ def validate_fixture(bundle: dict[str, Any]) -> list[InvariantIssue]:
         issues.extend(validate_outcome(outcome))
 
     tasks = {task["task_id"]: task for task in bundle.get("tasks", [])}
-    task_ids = set(tasks)
     snapshot_ids = {snapshot["snapshot_id"] for snapshot in bundle.get("snapshots", [])}
     execution_ids = {execution["execution_id"] for execution in bundle.get("executions", [])}
     for execution in bundle.get("executions", []):

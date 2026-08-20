@@ -13,7 +13,7 @@
 - Reimbursement controlled-world fixture;
 - Candidate taxonomy cases and blinded human coding batch;
 - Human–Agent collaboration charter and governance templates;
-- Source-grounded protocol documents and Human–Agent collaboration charter.
+- Source-grounded protocol documents and decision traceability matrix.
 
 ### Status
 
