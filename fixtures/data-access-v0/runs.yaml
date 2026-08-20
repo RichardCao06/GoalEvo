@@ -1,0 +1,13 @@
+- run_id: run-m3-data-access-seed1
+  protocol_version: 0.1.0
+  method: M3
+  world_id: data-access-v0
+  model_id: deterministic-fixture-agent-v0
+  seed: 1
+  budget: {token_limit: 100000, call_limit: 100, patch_limit_per_generation: 3}
+  initial_snapshot_id: data-access-snapshot-g0
+  generation_ids: [gen-0, gen-1, gen-2]
+  status: completed
+  created_at: '2026-09-01T00:00:00Z'
+  completed_at: '2026-10-02T12:00:00Z'
+  failure_reason: null

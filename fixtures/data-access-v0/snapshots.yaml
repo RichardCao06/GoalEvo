@@ -1,0 +1,39 @@
+- snapshot_id: data-access-snapshot-g0
+  run_id: run-m3-data-access-seed1
+  generation: 0
+  parent_snapshot_id: null
+  harness_version: data-access-harness-v0
+  evaluator_version: data-access-evaluator-v0
+  goal_version: data-access-visible-goal-v0
+  autonomy_version: data-access-autonomy-v0
+  assurance_version: data-access-assurance-v0
+  capability_envelope_version: data-access-envelope-read-only-v0
+  applied_patch_ids: []
+  artifact_hashes: {harness: draft-harness-v0, evaluator: draft-evaluator-v0, goal: draft-goal-v0, autonomy: draft-autonomy-v0, assurance: draft-assurance-v0, capability: draft-capability-v0}
+  created_at: '2026-09-01T00:00:00Z'
+- snapshot_id: data-access-snapshot-g1
+  run_id: run-m3-data-access-seed1
+  generation: 1
+  parent_snapshot_id: data-access-snapshot-g0
+  harness_version: data-access-harness-v0
+  evaluator_version: data-access-evaluator-v1
+  goal_version: data-access-visible-goal-v1
+  autonomy_version: data-access-autonomy-v0
+  assurance_version: data-access-assurance-v0
+  capability_envelope_version: data-access-envelope-read-only-v0
+  applied_patch_ids: [patch-data-access-evaluator-dual-approval, patch-data-access-discover-purpose-log]
+  artifact_hashes: {harness: draft-harness-v0, evaluator: draft-evaluator-v1, goal: draft-goal-v1, autonomy: draft-autonomy-v0, assurance: draft-assurance-v0, capability: draft-capability-v0}
+  created_at: '2026-09-12T12:00:00Z'
+- snapshot_id: data-access-snapshot-g2
+  run_id: run-m3-data-access-seed1
+  generation: 2
+  parent_snapshot_id: data-access-snapshot-g1
+  harness_version: data-access-harness-v0
+  evaluator_version: data-access-evaluator-v1
+  goal_version: data-access-visible-goal-v2
+  autonomy_version: data-access-autonomy-v0
+  assurance_version: data-access-assurance-v0
+  capability_envelope_version: data-access-envelope-read-only-v0
+  applied_patch_ids: [patch-data-access-duration-8h]
+  artifact_hashes: {harness: draft-harness-v0, evaluator: draft-evaluator-v1, goal: draft-goal-v2, autonomy: draft-autonomy-v0, assurance: draft-assurance-v0, capability: draft-capability-v0}
+  created_at: '2026-10-01T00:00:00Z'
