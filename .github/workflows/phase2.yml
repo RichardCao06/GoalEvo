@@ -1,0 +1,41 @@
+name: validate-phase2-scaffold
+
+on:
+  pull_request:
+  push:
+    branches: [feat/phase-2-engineering-pilot-scaffold]
+
+permissions:
+  contents: read
+
+jobs:
+  phase2:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install
+        run: python -m pip install -e '.[dev]'
+      - name: Validate Protocol v0.1 and fixtures
+        run: python -m goalevo_protocol.cli validate
+      - name: Require deterministic Phase 2 scaffold
+        run: python -m goalevo_protocol.phase2_cli scaffold-check
+      - name: Regenerate deterministic reference result
+        run: python -m goalevo_protocol.phase2_cli reference-check
+      - name: Report pending human decisions
+        run: python -m goalevo_protocol.phase2_cli decisions
+      - name: Test
+        run: pytest -q
+      - name: Confirm live pilot remains disabled
+        shell: bash
+        run: |
+          if python -m goalevo_protocol.phase2_cli live-check; then
+            echo "Live pilot must remain disabled in the scaffold PR."
+            exit 1
+          fi
+          echo "Live pilot correctly remains human-gated."
