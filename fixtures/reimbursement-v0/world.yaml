@@ -1,0 +1,26 @@
+world_id: reimbursement-v0
+domain: employee_reimbursement
+world_version: 0.1-draft
+roles:
+  - employee
+  - manager
+  - finance_owner
+  - compliance_officer
+  - independent_assessor
+  - experimental_agent
+  - system_operator
+risk_classes: [ordinary, financial_control, privacy, normative_change]
+initial_visible_goal_id: reimbursement-visible-goal-v0
+hidden_goal_timeline_id: reimbursement-goal-truth-timeline-v0
+authority_graph_id: reimbursement-authority-v0
+oracle_version: reimbursement-oracle-v0
+task_generator_version: reimbursement-taskgen-v0
+event_generator_version: reimbursement-eventgen-v0
+splits:
+  experience: {templates: [emergency_receipt, high_value_approval]}
+  update_validation: {templates: [emergency_receipt_cf, authority_cf]}
+  replay: {templates: [ordinary_receipt, emergency_receipt]}
+  id_test: {templates: [amount_variants]}
+  ood_test: {templates: [new_role_combinations]}
+  sealed: {status: not_created}
+content_hash: draft-world-v0
