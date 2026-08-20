@@ -10,7 +10,12 @@ TAXONOMY = ROOT / "taxonomy_cases"
 
 
 def test_candidate_taxonomy_is_balanced_and_not_gold() -> None:
-    records = [json.loads(line) for line in (TAXONOMY / "candidate_cases.jsonl").read_text(encoding="utf-8").splitlines() if line]
+    records = [
+        json.loads(line)
+        for path in sorted((TAXONOMY / "candidates").glob("*.jsonl"))
+        for line in path.read_text(encoding="utf-8").splitlines()
+        if line
+    ]
     assert len(records) == 72
     counts = Counter(record["proposed_label"] for record in records)
     assert set(counts.values()) == {12}
