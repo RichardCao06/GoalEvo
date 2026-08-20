@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goalevo.dev/schemas/world_manifest.schema.json",
+  "title": "Controlled world manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "world_id",
+    "domain",
+    "world_version",
+    "roles",
+    "risk_classes",
+    "initial_visible_goal_id",
+    "hidden_goal_timeline_id",
+    "authority_graph_id",
+    "oracle_version",
+    "task_generator_version",
+    "event_generator_version",
+    "splits",
+    "content_hash"
+  ],
+  "properties": {
+    "world_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain": {
+      "type": "string",
+      "minLength": 1
+    },
+    "world_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "risk_classes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "initial_visible_goal_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "hidden_goal_timeline_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_graph_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "oracle_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_generator_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_generator_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "splits": {
+      "type": "object",
+      "required": [
+        "experience",
+        "update_validation",
+        "replay",
+        "id_test",
+        "ood_test",
+        "sealed"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "experience": {
+          "type": "object"
+        },
+        "update_validation": {
+          "type": "object"
+        },
+        "replay": {
+          "type": "object"
+        },
+        "id_test": {
+          "type": "object"
+        },
+        "ood_test": {
+          "type": "object"
+        },
+        "sealed": {
+          "type": "object"
+        }
+      }
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^(sha256:[0-9a-f]{64}|draft-[a-z0-9-]+)$"
+    }
+  }
+}

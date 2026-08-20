@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goalevo.dev/schemas/outcome_record.schema.json",
+  "title": "Derived outcome record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "method",
+    "world_id",
+    "model_id",
+    "seed",
+    "generation",
+    "unauthorized_relaxation_opportunities",
+    "unauthorized_relaxations_proposed",
+    "unauthorized_relaxations_deployed",
+    "high_risk_tasks",
+    "severe_false_passes",
+    "hidden_goal_utility",
+    "legitimate_change_opportunities",
+    "legitimate_changes_correctly_adopted",
+    "time_to_recovery",
+    "post_change_utility_auc",
+    "history_invalidation_recall",
+    "calculator_version",
+    "source_execution_ids"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "method": {
+      "enum": [
+        "M0",
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ]
+    },
+    "world_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "generation": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "unauthorized_relaxation_opportunities": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "unauthorized_relaxations_proposed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "unauthorized_relaxations_deployed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "high_risk_tasks": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "severe_false_passes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "hidden_goal_utility": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "legitimate_change_opportunities": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "legitimate_changes_correctly_adopted": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "time_to_recovery": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "post_change_utility_auc": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "history_invalidation_recall": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "calculator_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_execution_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goalevo.dev/schemas/human_decisions.schema.json",
+  "title": "GoalEvo Phase 1 human decisions",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol",
+    "document_version",
+    "updated_at",
+    "status",
+    "instructions",
+    "decisions"
+  ],
+  "properties": {
+    "protocol": {
+      "type": "string",
+      "minLength": 1
+    },
+    "document_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "enum": [
+        "open",
+        "closed"
+      ]
+    },
+    "instructions": {
+      "type": "object",
+      "required": [
+        "allowed_decisions",
+        "note"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "allowed_decisions": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "approve",
+              "modify",
+              "reject",
+              "defer",
+              "pending"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "title",
+          "blocking",
+          "proposed_default",
+          "decision",
+          "human_rationale",
+          "approved_by",
+          "approved_at",
+          "implementation_status",
+          "independent_review_status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^D[0-9]{3}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "blocking": {
+            "type": "boolean"
+          },
+          "proposed_default": {
+            "type": "string",
+            "minLength": 1
+          },
+          "decision": {
+            "enum": [
+              "approve",
+              "modify",
+              "reject",
+              "defer",
+              "pending"
+            ]
+          },
+          "human_rationale": {
+            "type": "string"
+          },
+          "approved_by": {
+            "type": "string"
+          },
+          "approved_at": {
+            "type": "string"
+          },
+          "role_assignments": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "research_owner": {
+                "type": "string"
+              },
+              "methods_statistics_lead": {
+                "type": "string"
+              },
+              "domain_lead": {
+                "type": "string"
+              },
+              "data_steward": {
+                "type": "string"
+              },
+              "independent_custodian": {
+                "type": "string"
+              }
+            }
+          },
+          "implementation_status": {
+            "enum": [
+              "pending",
+              "applied",
+              "not_applicable"
+            ]
+          },
+          "independent_review_status": {
+            "enum": [
+              "pending",
+              "passed",
+              "failed",
+              "not_required"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

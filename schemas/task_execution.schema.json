@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goalevo.dev/schemas/task_execution.schema.json",
+  "title": "Task execution",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "execution_id",
+    "task_id",
+    "snapshot_id",
+    "declared_status",
+    "produced_action",
+    "tool_trace",
+    "evidence_used",
+    "oracle_status",
+    "false_pass",
+    "severe_false_pass",
+    "false_block",
+    "abstained",
+    "latency_ms",
+    "token_cost",
+    "infrastructure_failure",
+    "method_failure"
+  ],
+  "properties": {
+    "execution_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "snapshot_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "declared_status": {
+      "enum": [
+        "success",
+        "failure",
+        "abstain",
+        "escalate"
+      ]
+    },
+    "produced_action": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tool_trace": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "evidence_used": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "oracle_status": {
+      "enum": [
+        "pass",
+        "fail",
+        "unknown"
+      ]
+    },
+    "false_pass": {
+      "type": "boolean"
+    },
+    "severe_false_pass": {
+      "type": "boolean"
+    },
+    "false_block": {
+      "type": "boolean"
+    },
+    "abstained": {
+      "type": "boolean"
+    },
+    "latency_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "token_cost": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "infrastructure_failure": {
+      "type": "boolean"
+    },
+    "method_failure": {
+      "type": "boolean"
+    }
+  }
+}

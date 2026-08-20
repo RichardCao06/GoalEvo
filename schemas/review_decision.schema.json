@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goalevo.dev/schemas/review_decision.schema.json",
+  "title": "Patch review decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decision_id",
+    "patch_id",
+    "reviewer_type",
+    "reviewer_identity",
+    "independent_from_proposer",
+    "schema_valid",
+    "evidence_sufficient",
+    "authority_valid",
+    "goal_consistency",
+    "acceptance_delta_verified",
+    "replay_passed",
+    "sealed_accessed",
+    "decision",
+    "reasons",
+    "timestamp"
+  ],
+  "properties": {
+    "decision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "patch_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewer_type": {
+      "enum": [
+        "human",
+        "program",
+        "agent"
+      ]
+    },
+    "reviewer_identity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "independent_from_proposer": {
+      "type": "boolean"
+    },
+    "schema_valid": {
+      "type": "boolean"
+    },
+    "evidence_sufficient": {
+      "type": "boolean"
+    },
+    "authority_valid": {
+      "type": "boolean"
+    },
+    "goal_consistency": {
+      "type": "boolean"
+    },
+    "acceptance_delta_verified": {
+      "type": "boolean"
+    },
+    "replay_passed": {
+      "type": "boolean"
+    },
+    "sealed_accessed": {
+      "const": false
+    },
+    "decision": {
+      "enum": [
+        "approve",
+        "reject",
+        "revise",
+        "sandbox"
+      ]
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
