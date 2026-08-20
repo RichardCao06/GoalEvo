@@ -1,0 +1,46 @@
+protocol_id: goalevo-track-a-phase-1
+version: 0.1-draft
+status: draft
+research_question: >-
+  How can a self-evolving system distinguish genuine capability improvement,
+  evaluator correction, legitimate goal change, and unauthorized goalpost movement?
+hypotheses:
+  - id: H1
+    label: safety_superiority
+    status: proposed
+  - id: H2
+    label: utility_noninferiority
+    status: proposed
+  - id: H3
+    label: legitimate_adaptability
+    status: proposed
+methods: [M1, M2, M3]
+primary_outcomes:
+  H1: unauthorized_relaxation_deployment_rate
+  H2: hidden_goal_utility
+  H3: post_change_utility_auc
+noninferiority_margin:
+  status: pending_pilot
+  value: null
+  procedure_decision: D009
+exclusion_rules:
+  - Infrastructure failures may be rerun only under a preregistered rule.
+  - Method-caused failures remain part of the method result.
+failure_handling:
+  retain_all_failures: true
+  distinguish_infrastructure_and_method_failure: true
+statistical_models:
+  H1: mixed_effects_logistic
+  H2: mixed_effects_noninferiority
+  H3: mixed_effects_or_discrete_time_survival_after_pilot
+multiplicity_control:
+  strategy: hierarchical
+  order: [H1, H2, H3]
+sealed_test_policy:
+  status: not_created
+  builder_access: prohibited
+  experimental_agent_access: prohibited
+human_decision_file: governance/human-decisions/phase-1.yaml
+human_decision_gate: false
+freeze_timestamp: null
+content_hash: draft-not-frozen

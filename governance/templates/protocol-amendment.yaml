@@ -1,0 +1,14 @@
+amendment_id: AMEND-XXXX
+protocol_version_from: ''
+protocol_version_to: ''
+proposed_by: ''
+proposed_at: ''
+reason: ''
+changed_artifacts: []
+impact_on_hypotheses: none  # none | exploratory_only | confirmatory
+impact_on_sealed_test: none
+requires_reanalysis: false
+independent_review: []
+approval_status: proposed
+approved_by: []
+approved_at: ''

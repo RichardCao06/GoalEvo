@@ -1,0 +1,175 @@
+protocol: goalevo-phase-1
+document_version: 0.1-draft
+updated_at: '2026-08-20T00:00:00Z'
+status: open
+instructions:
+  allowed_decisions:
+  - approve
+  - modify
+  - reject
+  - defer
+  - pending
+  note: Agent may propose defaults and implement drafts, but only authorized humans
+    may change a blocking decision from pending/defer to approve/modify/reject.
+decisions:
+- id: D001
+  title: 研究首要问题与证据顺序
+  blocking: true
+  proposed_default: Distinguish capability improvement, evaluator correction, legitimate
+    goal change, and unauthorized goalpost movement; safety constraints precede aggregate
+    utility.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+  implementation_status: pending
+  independent_review_status: pending
+- id: D002
+  title: 系统状态本体
+  blocking: true
+  proposed_default: Sigma_t=(H_t,E_t,G_t,A_t,R_t,C_t), with hidden time-indexed G*_t.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+  implementation_status: pending
+  independent_review_status: pending
+- id: D003
+  title: G*_t 的操作性规范真值定位
+  blocking: true
+  proposed_default: G*_t is a researcher-constructed, time-indexed normative ground
+    truth for a controlled world, not a claim of universal moral truth.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+  implementation_status: pending
+  independent_review_status: pending
+- id: D004
+  title: Goal Discovery 与 Goal Normative Change 边界
+  blocking: true
+  proposed_default: Discovery reveals an unchanged G*_t; normative change modifies
+    G*_t through a valid authority or external rule event.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+  implementation_status: pending
+  independent_review_status: pending
+- id: D005
+  title: 严重 False Pass 与不可补偿红线
+  blocking: true
+  proposed_default: Hard-goal violations, unauthorized normative/autonomy/assurance
+    changes, prohibited self-signing, false completion over data gaps, and stale-result
+    use are severe false passes when declared successful.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+  implementation_status: pending
+  independent_review_status: pending
+- id: D006
+  title: 六类变更与原子 Patch
+  blocking: true
+  proposed_default: Use six primary change types and require one primary type per
+    atomic patch; connect cross-layer changes only through a bundle.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+  implementation_status: pending
+  independent_review_status: pending
+- id: D007
+  title: Track A 授权角色与权限
+  blocking: true
+  proposed_default: Separate employee, manager, finance owner, compliance officer,
+    independent assessor, experimental agent, and system operator permissions.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+  implementation_status: pending
+  independent_review_status: pending
+- id: D008
+  title: Track A-H1 安全性主张
+  blocking: true
+  proposed_default: Compare governed M3 against ungoverned mutable-goal M2 on deployed
+    unauthorized relaxation probability, with severe false pass as a key safety endpoint.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+  implementation_status: pending
+  independent_review_status: pending
+- id: D009
+  title: Track A-H2 效用非劣主张与 delta 冻结程序
+  blocking: true
+  proposed_default: Compare M3 against fixed-goal self-evolution M1 using oracle utility
+    under G*_t; freeze the numerical non-inferiority margin after a blinded pilot
+    process.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+  implementation_status: pending
+  independent_review_status: pending
+- id: D010
+  title: Track A-H3 合法适应性主张
+  blocking: true
+  proposed_default: Measure post-change recovery time and utility, correct effective
+    timing, invalidation propagation, and rejection of unauthorized changes.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+  implementation_status: pending
+  independent_review_status: pending
+- id: D011
+  title: H1-H3 联合成功规则
+  blocking: true
+  proposed_default: A full Track A claim requires safety superiority, utility non-inferiority,
+    and legitimate adaptability; partial support narrows the conclusion.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+  implementation_status: pending
+  independent_review_status: pending
+- id: D012
+  title: 人类责任角色与签署人
+  blocking: true
+  proposed_default: Assign Research Owner, Methods/Statistics Lead, Domain Lead, Data
+    Steward, and Independent Custodian; prohibit one-person custody and final adjudication.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+  role_assignments:
+    research_owner: ''
+    methods_statistics_lead: ''
+    domain_lead: ''
+    data_steward: ''
+    independent_custodian: ''
+  implementation_status: pending
+  independent_review_status: pending
+- id: D013
+  title: 第一批微型世界范围
+  blocking: false
+  proposed_default: Start with reimbursement approval and data-access control.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+  implementation_status: pending
+  independent_review_status: pending
+- id: D014
+  title: 开放科学与许可证临时安排
+  blocking: false
+  proposed_default: Do not declare an additional license or upload sensitive/sealed
+    data until a human decision is recorded.
+  decision: pending
+  human_rationale: ''
+  approved_by: ''
+  approved_at: ''
+  implementation_status: pending
+  independent_review_status: pending
