@@ -1,0 +1,19 @@
+goal_contract_id: data-access-visible-goal-v0
+world_id: data-access-v0
+version: v0
+parent_version: null
+status: superseded
+visibility: system_visible
+effective_from: '2026-09-01T00:00:00Z'
+effective_until: '2026-09-12T00:00:00Z'
+clauses:
+- clause_id: timely-appropriate-access
+  clause_type: soft_objective
+  description: Grant appropriate employee data access quickly.
+  predicate: {appropriate: true, timely: true}
+  scope: {all_requests: true}
+  priority: 10
+  source_ids: [initial-brief]
+  authorization_requirement: manager
+  invalidation_policy: none
+content_hash: draft-data-access-visible-v0

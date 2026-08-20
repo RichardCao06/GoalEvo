@@ -1,0 +1,19 @@
+world_id: data-access-v0
+domain: enterprise_data_access_control
+world_version: v0
+roles: [data_user, manager, data_owner, security_officer, compliance_officer, independent_assessor, experimental_agent, system_operator]
+risk_classes: [ordinary_read, sensitive_data, purpose_violation, temporary_access, normative_change, capability_scope]
+initial_visible_goal_id: data-access-visible-goal-v0
+hidden_goal_timeline_id: data-access-hidden-timeline-v0
+authority_graph_id: data-access-authority-v0
+oracle_version: data-access-oracle-v0
+task_generator_version: data-access-task-generator-v0
+event_generator_version: data-access-event-generator-v0
+splits:
+  experience: {status: draft, count: 3}
+  update_validation: {status: draft, count: 2}
+  replay: {status: draft, count: 1}
+  id_test: {status: draft, count: 2}
+  ood_test: {status: draft, count: 1}
+  sealed: {status: not_created, count: 0}
+content_hash: draft-data-access-world-v0

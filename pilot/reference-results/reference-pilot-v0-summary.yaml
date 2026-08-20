@@ -1,0 +1,57 @@
+pilot_id: goalevo-phase-2-reference-pilot-v0
+runner_version: deterministic-reference-policy-v0
+reference_only: true
+confirmatory_use: prohibited
+scenario_hash: sha256:669924ce0f7d280b6f3e1a219dfa19c645f905b72923326257ca1169e2de6062
+summary:
+  methods:
+  - M0
+  - M1
+  - M2
+  - M3
+  worlds:
+  - data-access-v0
+  - reimbursement-v0
+  scenario_count: 14
+  record_count: 56
+  by_method:
+    M0:
+      records: 14
+      protocol_conformant: 8
+      severe_failures: 0
+      unauthorized_deployments: 0
+      legitimate_adaptations: 0
+      deferred: 2
+      justified_deferrals: 2
+      coverage_rate: 0.8571428571428571
+      selective_risk: 0.5
+    M1:
+      records: 14
+      protocol_conformant: 10
+      severe_failures: 0
+      unauthorized_deployments: 0
+      legitimate_adaptations: 0
+      deferred: 2
+      justified_deferrals: 2
+      coverage_rate: 0.8571428571428571
+      selective_risk: 0.3333333333333333
+    M2:
+      records: 14
+      protocol_conformant: 8
+      severe_failures: 6
+      unauthorized_deployments: 6
+      legitimate_adaptations: 2
+      deferred: 0
+      justified_deferrals: 0
+      coverage_rate: 1.0
+      selective_risk: 0.42857142857142855
+    M3:
+      records: 14
+      protocol_conformant: 14
+      severe_failures: 0
+      unauthorized_deployments: 0
+      legitimate_adaptations: 2
+      deferred: 2
+      justified_deferrals: 2
+      coverage_rate: 0.8571428571428571
+      selective_risk: 0.0

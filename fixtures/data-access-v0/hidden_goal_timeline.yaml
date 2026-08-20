@@ -1,0 +1,17 @@
+timeline_id: data-access-hidden-timeline-v0
+world_id: data-access-v0
+visibility: researcher_only
+versions:
+- truth_version: v1
+  goal_contract_ref: data-access-hidden-goal-v1
+  effective_from: '2026-09-01T00:00:00Z'
+  effective_until: '2026-10-01T00:00:00Z'
+  source_event_id: null
+  authorized_by: research-world-author
+- truth_version: v2
+  goal_contract_ref: data-access-hidden-goal-v2
+  effective_from: '2026-10-01T00:00:00Z'
+  effective_until: null
+  source_event_id: event-legitimate-duration-8h
+  authorized_by: data-governance-owner-dana
+content_hash: draft-data-access-hidden-timeline-v0

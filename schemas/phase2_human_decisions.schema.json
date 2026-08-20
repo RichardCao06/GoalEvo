@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goalevo.dev/schemas/phase2_human_decisions.schema.json",
+  "title": "GoalEvo Phase 2 human decisions",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol", "document_version", "updated_at", "status", "instructions", "decisions"],
+  "properties": {
+    "protocol": {"type": "string", "minLength": 1},
+    "document_version": {"type": "string", "minLength": 1},
+    "updated_at": {"type": "string", "format": "date-time"},
+    "status": {"enum": ["open", "closed"]},
+    "instructions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allowed_decisions", "note"],
+      "properties": {
+        "allowed_decisions": {"type": "array", "uniqueItems": true, "items": {"enum": ["approve", "modify", "reject", "defer", "pending", "authorize_live_pilot"]}},
+        "note": {"type": "string", "minLength": 1}
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "minItems": 14,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "blocks", "proposed_default", "decision", "human_rationale", "approved_by", "approved_at"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^P2D[0-9]{3}$"},
+          "title": {"type": "string", "minLength": 1},
+          "blocks": {"type": "array", "uniqueItems": true, "items": {"enum": ["live_pilot", "taxonomy_gold", "v0.2_freeze"]}},
+          "proposed_default": {"type": "string", "minLength": 1},
+          "decision": {"enum": ["approve", "modify", "reject", "defer", "pending", "authorize_live_pilot"]},
+          "human_rationale": {"type": "string"},
+          "approved_by": {"type": "string"},
+          "approved_at": {"type": "string"},
+          "parameters": {"type": "object"},
+          "role_assignments": {"type": "object", "additionalProperties": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

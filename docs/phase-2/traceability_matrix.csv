@@ -1,0 +1,15 @@
+requirement,human_decision,document,implementation,test,status
+P2-SCOPE,P2D001,docs/phase-2/PHASE_2_ENGINEERING_PILOT_PLAN.md,pilot/phase-2.yaml,tests/test_phase2_gate.py,scaffold_applied_live_pending
+P2-MODEL,P2D002,docs/phase-2/HUMAN_DECISION_PACKET.md,pilot/phase-2.yaml,tests/test_phase2_gate.py,pending_human
+P2-DATA,P2D003,docs/phase-2/HUMAN_DECISION_PACKET.md,governance/human-decisions/phase-2.yaml,tests/test_phase2_gate.py,pending_human
+P2-BUDGET,P2D004,docs/phase-2/HUMAN_DECISION_PACKET.md,pilot/phase-2.yaml,tests/test_phase2_gate.py,pending_human
+P2-SCALE,P2D005,docs/phase-2/HUMAN_DECISION_PACKET.md,pilot/phase-2.yaml,tests/test_engineering_pilot.py,pending_human
+P2-MUTATION,P2D006,docs/phase-2/HUMAN_DECISION_PACKET.md,pilot/phase-2.yaml,tests/test_phase2_gate.py,pending_human
+P2-FAIRNESS,P2D007,docs/phase-2/HUMAN_DECISION_PACKET.md,src/goalevo_protocol/engineering_pilot.py,tests/test_engineering_pilot.py,pending_human
+P2-CODING,P2D008,docs/phase-2/HUMAN_DECISION_PACKET.md,governance/human-decisions/phase-2.yaml,tests/test_phase2_gate.py,pending_human
+P2-BLINDING,P2D009,docs/phase-2/HUMAN_DECISION_PACKET.md,pilot/phase-2.yaml,tests/test_phase2_gate.py,pending_human
+P2-STOPGO,P2D010,docs/phase-2/HUMAN_DECISION_PACKET.md,pilot/phase-2.yaml,tests/test_phase2_gate.py,pending_human
+P2-APPROVAL,P2D011,docs/phase-2/HUMAN_DECISION_PACKET.md,fixtures/data-access-v0/authority_graph.yaml,tests/test_data_access_fixture.py,pending_human
+P2-LIVE,P2D012,docs/phase-2/HUMAN_DECISION_PACKET.md,src/goalevo_protocol/phase2_gate.py,tests/test_phase2_gate.py,closed
+P2-WORLD,P2D013,docs/phase-2/HUMAN_DECISION_PACKET.md,fixtures/data-access-v0/,tests/test_data_access_fixture.py,draft_fixture
+P2-DELTA,P2D014,docs/phase-2/HUMAN_DECISION_PACKET.md,governance/human-decisions/phase-2.yaml,tests/test_phase2_gate.py,pending_v0.2
